@@ -27,4 +27,27 @@ RSpec.describe Order, type: :model do
     Order.destroy_all
     expect{Order.create!()}.to raise_error ActiveRecord::RecordInvalid 
   end
+
+  it "is destroyed when a user is destroyed" do
+    User.destroy_all
+    user = User.create!(
+      username: Faker::Internet.username(specifier: 5..15),
+      password: Faker::Internet.username,
+      email: Faker::Internet.email
+    )
+
+    Payment.destroy_all
+    payment = Payment.create!(payment_method: "mpesa")
+
+    Order.destroy_all
+    order = Order.create!(
+      user_id: user.id,
+      payment_id: payment.id,
+      delivered: false
+    )
+    
+    order_id = order.id
+    user.destroy
+    expect{Order.find(order_id)}.to raise_error ActiveRecord::RecordNotFound
+  end
 end
