@@ -1,0 +1,2 @@
+class Practitioner < ApplicationRecord
+end
