@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_20_135341) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_20_194826) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -110,6 +110,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_135341) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "responses", force: :cascade do |t|
+    t.bigint "payment_id"
+    t.string "merchant_request_id"
+    t.string "response_description"
+    t.integer "response_code"
+    t.string "customer_message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payment_id"], name: "index_responses_on_payment_id"
+  end
+
   create_table "shopping_carts", force: :cascade do |t|
     t.bigint "order_id", null: false
     t.bigint "product_id", null: false
@@ -135,6 +146,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_135341) do
   add_foreign_key "payments", "orders"
   add_foreign_key "practitioner_profiles", "practitioners"
   add_foreign_key "practitioners", "departments"
+  add_foreign_key "responses", "payments"
   add_foreign_key "shopping_carts", "orders"
   add_foreign_key "shopping_carts", "products"
 end
