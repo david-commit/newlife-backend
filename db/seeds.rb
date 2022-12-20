@@ -6,14 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-puts "🌱 Start seeding..."
+puts "Start seeding..."
 
-puts "1. seeding payment..."
-payment1 = Payment.create!(payment_method: "mpesa")
-payment2 = Payment.create!(payment_method: "paypal")
-
-
-puts "2. seeding user..."
+puts "1. seeding user..."
 user1 = User.create!(
     username: "vincent",
     password: "vincent",
@@ -27,12 +22,16 @@ user2 = User.create!(
 )
 
 
-puts "3. seeding order..."
+puts "2. seeding order..."
 order1 = Order.create!(
     user_id: user1.id,
-    payment_id: payment1.id,
     delivered: false
 )
+
+
+puts "3. seeding payment..."
+payment1 = Payment.create!(payment_method: "mpesa", order_id: order1.id)
+payment2 = Payment.create!(payment_method: "paypal", order_id: order1.id)
 
 
 puts "4. seeding products..."

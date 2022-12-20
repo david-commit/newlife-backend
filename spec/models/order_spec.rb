@@ -10,13 +10,9 @@ RSpec.describe Order, type: :model do
       email: "vincent@vincent.com"
     )
 
-    Payment.destroy_all
-    payment = Payment.create!(payment_method: "mpesa")
-
     Order.destroy_all
     order = Order.create!(
       user_id: user.id,
-      payment_id: payment.id,
       delivered: false
     )
 
@@ -36,13 +32,9 @@ RSpec.describe Order, type: :model do
       email: "vincent@vincent.com"
     )
 
-    Payment.destroy_all
-    payment = Payment.create!(payment_method: "mpesa")
-
     Order.destroy_all
     order = Order.create!(
       user_id: user.id,
-      payment_id: payment.id,
       delivered: false
     )
     
@@ -59,14 +51,9 @@ RSpec.describe Order, type: :model do
       email: "vincent@vincent.com"
     )
 
-    Payment.destroy_all
-    payment = Payment.create!(payment_method: "mpesa")
-    expect(payment.id.nil?).to eql(false)
-
     Order.destroy_all
     order = Order.create!(
       user_id: user.id,
-      payment_id: payment.id,
       delivered: false
     )
 
@@ -99,14 +86,9 @@ RSpec.describe Order, type: :model do
       email: "vincent@vincent.com"
     )
 
-    Payment.destroy_all
-    payment = Payment.create!(payment_method: "mpesa")
-    expect(payment.id.nil?).to eql(false)
-
     Order.destroy_all
     order = Order.create!(
       user_id: user.id,
-      payment_id: payment.id,
       delivered: false
     )
 

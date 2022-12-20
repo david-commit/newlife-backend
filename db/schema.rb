@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_20_101847) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_20_135341) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,11 +45,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_101847) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "payment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "delivered"
-    t.index ["payment_id"], name: "index_orders_on_payment_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -74,6 +72,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_101847) do
     t.string "payment_method"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "order_id", null: false
+    t.index ["order_id"], name: "index_payments_on_order_id"
   end
 
   create_table "practitioner_profiles", force: :cascade do |t|
@@ -130,9 +130,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_101847) do
   add_foreign_key "appointments", "practitioners"
   add_foreign_key "appointments", "users"
   add_foreign_key "messages", "appointments"
-  add_foreign_key "orders", "payments"
   add_foreign_key "orders", "users"
   add_foreign_key "patient_profiles", "users"
+  add_foreign_key "payments", "orders"
   add_foreign_key "practitioner_profiles", "practitioners"
   add_foreign_key "practitioners", "departments"
   add_foreign_key "shopping_carts", "orders"
