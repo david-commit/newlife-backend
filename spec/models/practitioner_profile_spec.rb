@@ -46,7 +46,7 @@ RSpec.describe PractitionerProfile, type: :model do
       last_name: "Vincent"
     )
 
-    expect(practitioner.practitioner_profile).to be_instance_of(PractitionerProfile)
+    expect(practitioner.practitioner_profiles.first).to be_instance_of(PractitionerProfile)
   end
 
   it "is deleted when the practitioner it belongs to is deleted" do 

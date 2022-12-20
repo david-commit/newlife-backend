@@ -38,7 +38,7 @@ RSpec.describe PatientProfile, type: :model do
       last_name: "Vincent"
     )
 
-    expect(user.patient_profile).to be_instance_of(PatientProfile)
+    expect(user.patient_profiles.first).to be_instance_of(PatientProfile)
   end
 
   it "is deleted when the user it belongs to is deleted" do 
