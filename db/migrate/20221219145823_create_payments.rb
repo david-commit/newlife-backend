@@ -1,7 +1,7 @@
 class CreatePayments < ActiveRecord::Migration[7.0]
   def change
     create_table :payments do |t|
-      t.belongs_to :order, foreign_key: true
+      # t.belongs_to :order, foreign_key: true
       t.integer :business_short_code
       t.string :password
       t.datetime :timestamp

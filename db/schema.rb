@@ -69,7 +69,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_194826) do
   end
 
   create_table "payments", force: :cascade do |t|
-    t.string "payment_method"
+    t.integer "business_short_code"
+    t.string "password"
+    t.datetime "timestamp"
+    t.string "transaction_type"
+    t.bigint "party_A"
+    t.bigint "party_B"
+    t.integer "phone_number"
+    t.string "callback_url"
+    t.string "account_reference"
+    t.string "transaction_desc"
+    t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "order_id", null: false
