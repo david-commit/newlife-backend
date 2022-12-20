@@ -10,11 +10,15 @@ RSpec.describe Message, type: :model do
       email: "vincent@vincent.com"
     )
 
+    Department.destroy_all
+    department = Department.create!(name: "Human Resource")    
+
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
       password: "vincent",
-      email: "vincent@vincent.com"
+      email: "vincent@vincent.com",
+      department_id: department.id
     )
 
     Appointment.destroy_all
@@ -24,7 +28,7 @@ RSpec.describe Message, type: :model do
     )
 
     Message.destroy_all
-    message = Message.create(
+    message = Message.create!(
       appointment_id: appointment.id,
       sender_id: user.id,
       receiver_id: practitioner.id,
@@ -46,11 +50,15 @@ RSpec.describe Message, type: :model do
       email: "vincent@vincent.com"
     )
 
+    Department.destroy_all
+    department = Department.create!(name: "Human Resource")
+
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
       password: "vincent",
-      email: "vincent@vincent.com"
+      email: "vincent@vincent.com",
+      department_id: department.id
     )
 
     Appointment.destroy_all
@@ -60,7 +68,7 @@ RSpec.describe Message, type: :model do
     )
 
     Message.destroy_all
-    message = Message.create(
+    message = Message.create!(
       appointment_id: appointment.id,
       sender_id: user.id,
       receiver_id: practitioner.id,
@@ -78,11 +86,15 @@ RSpec.describe Message, type: :model do
       email: "vincent@vincent.com"
     )
 
+    Department.destroy_all
+    department = Department.create!(name: "Human Resource")
+
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
       password: "vincent",
-      email: "vincent@vincent.com"
+      email: "vincent@vincent.com",
+      department_id: department.id
     )
 
     Appointment.destroy_all
@@ -92,8 +104,11 @@ RSpec.describe Message, type: :model do
     )
 
     Message.destroy_all
-    message = Message.create(
-      appointment_id: appointment.id
+    message = Message.create!(
+      appointment_id: appointment.id,
+      sender_id: user.id,
+      receiver_id: practitioner.id,
+      content: "Hey, I would like to have an appointment with you this week. When do I expect you to be free?"
     )
 
     message_id = message.id

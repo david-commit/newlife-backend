@@ -2,11 +2,15 @@ require 'rails_helper'
 
 RSpec.describe PractitionerProfile, type: :model do
   it "can be created with valid data" do
+    Department.destroy_all
+    department = Department.create(name: "Human Resource")
+
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
       password: "vincent",
-      email: "vincent@vincent.com"
+      email: "vincent@vincent.com",
+      department_id: department.id
     )
 
     PractitionerProfile.destroy_all
@@ -24,11 +28,15 @@ RSpec.describe PractitionerProfile, type: :model do
   end
 
   it "is available in the Practitioner model it belongs to" do
+    Department.destroy_all
+    department = Department.create(name: "Human Resource")
+
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
       password: "vincent",
-      email: "vincent@vincent.com"
+      email: "vincent@vincent.com",
+      department_id: department.id
     )
 
     PractitionerProfile.destroy_all
@@ -42,11 +50,15 @@ RSpec.describe PractitionerProfile, type: :model do
   end
 
   it "is deleted when the practitioner it belongs to is deleted" do 
+    Department.destroy_all
+    department = Department.create(name: "Human Resource")
+
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
       password: "vincent",
-      email: "vincent@vincent.com"
+      email: "vincent@vincent.com",
+      department_id: department.id
     )
 
     PractitionerProfile.destroy_all

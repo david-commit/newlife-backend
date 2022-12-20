@@ -31,7 +31,6 @@ order1 = Order.create!(
 
 puts "3. seeding payment..."
 payment1 = Payment.create!(payment_method: "mpesa", order_id: order1.id)
-payment2 = Payment.create!(payment_method: "paypal", order_id: order1.id)
 
 
 puts "4. seeding products..."
@@ -155,7 +154,7 @@ vincent_profile = PatientProfile.create!(
 )
 
 enock_profile = PatientProfile.create!(
-    user_id: user1.id,
+    user_id: user2.id,
     first_name: "Enock",
     last_name: "Mokua",
     bio: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
@@ -209,8 +208,8 @@ end
 
 
 puts "11. seeding practitioner_profile..."
-david_profile = PatientProfile.create!(
-    user_id: practitioner1.id,
+david_profile = PractitionerProfile.create!(
+    practitioner_id: practitioner1.id,
     first_name: "David",
     last_name: "Ondiege",
     bio: Faker::Lorem.paragraph(sentence_count: rand(1..5)),

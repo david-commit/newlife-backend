@@ -9,11 +9,16 @@ RSpec.describe Appointment, type: :model do
       email: "vincent@vincent.com"
     )
 
+
+    Department.destroy_all
+    department = Department.create(name: "Human Resource")    
+
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
       password: "vincent",
-      email: "vincent@vincent.com"
+      email: "vincent@vincent.com",
+      department_id: department.id
     )
 
     Appointment.destroy_all
@@ -33,11 +38,15 @@ RSpec.describe Appointment, type: :model do
       email: "vincent@vincent.com"
     )
 
+    Department.destroy_all
+    department = Department.create(name: "Human Resource")    
+
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
       password: "vincent",
-      email: "vincent@vincent.com"
+      email: "vincent@vincent.com",
+      department_id: department.id
     )
 
     Appointment.destroy_all
@@ -57,11 +66,16 @@ RSpec.describe Appointment, type: :model do
       email: "vincent@vincent.com"
     )
 
+
+    Department.destroy_all
+    department = Department.create(name: "Human Resource")    
+
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
       password: "vincent",
-      email: "vincent@vincent.com"
+      email: "vincent@vincent.com",
+      department_id: department.id
     )
 
     Appointment.destroy_all
@@ -84,11 +98,15 @@ RSpec.describe Appointment, type: :model do
       email: "vincent@vincent.com"
     )
 
+    Department.destroy_all
+    department = Department.create(name: "Human Resource")    
+
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
       password: "vincent",
-      email: "vincent@vincent.com"
+      email: "vincent@vincent.com",
+      department_id: department.id
     )
 
     Appointment.destroy_all

@@ -82,19 +82,14 @@ RSpec.describe User, type: :model do
       email: "vincent@vincent.com"
     )
 
-    Payment.destroy_all
-    payment = Payment.create!(payment_method: "mpesa")
-
     Order.destroy_all
     order1 = Order.create!(
       user_id: user.id,
-      payment_id: payment.id,
       delivered: false
-    ) 
+    )    
     
     order2 = Order.create!(
       user_id: user.id,
-      payment_id: payment.id,
       delivered: false
     )
     

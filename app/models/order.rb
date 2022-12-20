@@ -1,8 +1,8 @@
 class Order < ApplicationRecord
   belongs_to :user
-  has_one :payment
+  has_one :payment, dependent: :destroy
   has_many :shopping_carts, dependent: :destroy
-  has_many :products, through: :shopping_carts
+  has_many :products, through: :shopping_carts, dependent: :destroy
 
   validates :user, presence: true
 end
