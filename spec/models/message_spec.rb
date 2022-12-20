@@ -25,10 +25,49 @@ RSpec.describe Message, type: :model do
 
     Message.destroy_all
     message = Message.create(
-      appointment_id: appointment.id
+      appointment_id: appointment.id,
+      sender_id: user.id,
+      receiver_id: practitioner.id,
+      content: "Hey, I would like to have an appointment with you this week. When do I expect you to be free?"
     )
 
     expect(message.id.nil?).to eql(false)
+  end
+
+  it "cannot be created with invalid input" do
+    expect{Message.create!()}.to raise_error ActiveRecord::RecordInvalid
+  end
+
+  it "has correct content" do
+    User.destroy_all
+    user = User.create!(
+      username: "vincent",
+      password: "vincent",
+      email: "vincent@vincent.com"
+    )
+
+    Practitioner.destroy_all
+    practitioner = Practitioner.create!(
+      username: "vincent",
+      password: "vincent",
+      email: "vincent@vincent.com"
+    )
+
+    Appointment.destroy_all
+    appointment = Appointment.create!(
+      user_id: user.id,
+      practitioner_id: practitioner.id
+    )
+
+    Message.destroy_all
+    message = Message.create(
+      appointment_id: appointment.id,
+      sender_id: user.id,
+      receiver_id: practitioner.id,
+      content: "Hey, I would like to have an appointment with you this week. When do I expect you to be free?"
+    )
+    
+    expect(message.content).to eql("Hey, I would like to have an appointment with you this week. When do I expect you to be free?")
   end
 
   it "is deleted when the appointment it belongs to is deleted" do 
