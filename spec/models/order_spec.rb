@@ -5,9 +5,9 @@ RSpec.describe Order, type: :model do
 
     User.destroy_all
     user = User.create!(
-      username: Faker::Internet.username(specifier: 5..15),
-      password: Faker::Internet.username,
-      email: Faker::Internet.email
+      username: "vincent",
+      password: "vincent",
+      email: "vincent@vincent.com"
     )
 
     Payment.destroy_all
@@ -31,9 +31,9 @@ RSpec.describe Order, type: :model do
   it "is destroyed when a user is destroyed" do
     User.destroy_all
     user = User.create!(
-      username: Faker::Internet.username(specifier: 5..15),
-      password: Faker::Internet.username,
-      email: Faker::Internet.email
+      username: "vincent",
+      password: "vincent",
+      email: "vincent@vincent.com"
     )
 
     Payment.destroy_all
