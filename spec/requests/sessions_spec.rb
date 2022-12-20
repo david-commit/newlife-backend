@@ -1,7 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe "Sessions", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
-  end
+    it "allows one to login" do
+      headers = {"ContentType": "application/json"}
+      post '/signup', params: {"username": "what", "password": "what", "email": "what@what.com"}
+      post '/login', params: {"username": "what", "password": "what", "email": "what@what.com"}
+
+      expect(response).to have_http_status(200)
+    end
+
+    it "allows one to logout" do
+
+    end
 end
