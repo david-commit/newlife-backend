@@ -62,7 +62,7 @@ RSpec.describe User, type: :model do
     }.to raise_error ActiveRecord::RecordInvalid   
   end  
 
-  it "can have appointments" do
+  it "can have many appointments" do
     User.destroy_all
 
     user = User.create!(
@@ -72,5 +72,32 @@ RSpec.describe User, type: :model do
     )
 
     expect(user.appointments).to be_kind_of(ActiveRecord::Associations::CollectionProxy)
+  end
+
+  it "can have many orders" do
+    User.destroy_all
+    user = User.create!(
+      username: "vincent",
+      password: "vincent",
+      email: "vincent@vincent.com"
+    )
+
+    Payment.destroy_all
+    payment = Payment.create!(payment_method: "mpesa")
+
+    Order.destroy_all
+    order1 = Order.create!(
+      user_id: user.id,
+      payment_id: payment.id,
+      delivered: false
+    ) 
+    
+    order2 = Order.create!(
+      user_id: user.id,
+      payment_id: payment.id,
+      delivered: false
+    )
+    
+    expect(user.orders).to be_kind_of(ActiveRecord::Associations::CollectionProxy)
   end
 end
