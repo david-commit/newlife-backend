@@ -26,15 +26,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_101847) do
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
-  create_table "department_practitioners", force: :cascade do |t|
-    t.bigint "department_id", null: false
-    t.bigint "practitioner_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["department_id"], name: "index_department_practitioners_on_department_id"
-    t.index ["practitioner_id"], name: "index_department_practitioners_on_practitioner_id"
-  end
-
   create_table "departments", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -138,8 +129,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_101847) do
 
   add_foreign_key "appointments", "practitioners"
   add_foreign_key "appointments", "users"
-  add_foreign_key "department_practitioners", "departments"
-  add_foreign_key "department_practitioners", "practitioners"
   add_foreign_key "messages", "appointments"
   add_foreign_key "orders", "payments"
   add_foreign_key "orders", "users"
