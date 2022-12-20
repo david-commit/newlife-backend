@@ -38,7 +38,7 @@ RSpec.describe Message, type: :model do
     expect{Message.create!()}.to raise_error ActiveRecord::RecordInvalid
   end
 
-  it "has correct content" do
+  it "has correct content when created" do
     User.destroy_all
     user = User.create!(
       username: "vincent",
