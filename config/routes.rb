@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :department_practitioners
   resources :departments
   resources :practitioner_profiles
   resources :messages

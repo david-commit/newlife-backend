@@ -1,2 +1,0 @@
-class DepartmentPractitionersController < ApplicationController
-end
