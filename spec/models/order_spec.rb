@@ -50,4 +50,90 @@ RSpec.describe Order, type: :model do
     user.destroy
     expect{Order.find(order_id)}.to raise_error ActiveRecord::RecordNotFound
   end
+
+  it "can have many shopping carts" do
+    User.destroy_all
+    user = User.create!(
+      username: "vincent",
+      password: "vincent",
+      email: "vincent@vincent.com"
+    )
+
+    Payment.destroy_all
+    payment = Payment.create!(payment_method: "mpesa")
+    expect(payment.id.nil?).to eql(false)
+
+    Order.destroy_all
+    order = Order.create!(
+      user_id: user.id,
+      payment_id: payment.id,
+      delivered: false
+    )
+
+    Product.destroy_all
+    product = Product.create!(
+      name: "What",
+      category: "Whatever",
+      price: 2.67
+    )
+
+    ShoppingCart.destroy_all
+    shopping_cart1 = ShoppingCart.create!(
+      order_id: order.id,
+      product_id: product.id
+    )
+
+    shopping_cart2 = ShoppingCart.create!(
+      order_id: order.id,
+      product_id: product.id
+    )
+    
+    expect(order.shopping_carts).to be_kind_of(ActiveRecord::Associations::CollectionProxy)    
+  end
+
+  it "can have many products" do
+    User.destroy_all
+    user = User.create!(
+      username: "vincent",
+      password: "vincent",
+      email: "vincent@vincent.com"
+    )
+
+    Payment.destroy_all
+    payment = Payment.create!(payment_method: "mpesa")
+    expect(payment.id.nil?).to eql(false)
+
+    Order.destroy_all
+    order = Order.create!(
+      user_id: user.id,
+      payment_id: payment.id,
+      delivered: false
+    )
+
+    Product.destroy_all
+    product1 = Product.create!(
+      name: "What",
+      category: "Whatever",
+      price: 2.67
+    )
+
+    product2 = Product.create!(
+      name: "Another Product",
+      category: "Whatever",
+      price: 2.67
+    )    
+
+    ShoppingCart.destroy_all
+    shopping_cart = ShoppingCart.create!(
+      order_id: order.id,
+      product_id: product1.id
+    )
+
+    shopping_cart = ShoppingCart.create!(
+      order_id: order.id,
+      product_id: product2.id
+    )
+    
+    expect(order.products).to be_kind_of(ActiveRecord::Associations::CollectionProxy)        
+  end
 end
