@@ -5,9 +5,9 @@ RSpec.describe User, type: :model do
     User.destroy_all
 
     user = User.create!(
-      username: Faker::Internet.username(specifier: 5..15),
-      password: Faker::Internet.username,
-      email: Faker::Internet.email
+      username: "vincent",
+      password: "vincent",
+      email: "vincent@vincent.com"
     )
 
     expect(user.id.nil?).to eql(false)
@@ -30,9 +30,9 @@ RSpec.describe User, type: :model do
     User.destroy_all
 
     user = User.create!(
-      username: Faker::Internet.username(specifier: 5..15),
-      password: Faker::Internet.username,
-      email: Faker::Internet.email
+      username: "vincent",
+      password: "vincent",
+      email: "vincent@vincent.com"
     )
 
     expect(user.appointments).to be_kind_of(ActiveRecord::Associations::CollectionProxy)
