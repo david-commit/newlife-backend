@@ -14,11 +14,11 @@ RSpec.describe Department, type: :model do
     expect{Department.create!()}.to raise_error ActiveRecord::RecordInvalid   
   end
 
-  it "can have many department_practitioners" do
+  it "can have many practitioners" do
     Department.destroy_all
     department = Department.create(name: "Human Resource")
     expect(department.id.nil?).to eql(false)
 
-   expect(department.department_practitioners).to be_kind_of(ActiveRecord::Associations::CollectionProxy)
+   expect(department.practitioners).to be_kind_of(ActiveRecord::Associations::CollectionProxy)
   end
 end
