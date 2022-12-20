@@ -26,6 +26,42 @@ RSpec.describe User, type: :model do
     }.to raise_error ActiveRecord::RecordInvalid  
   end
 
+  it "cannot be created using username that already exists" do
+    User.destroy_all
+
+    user1 = User.create!(
+      username: "vincent",
+      password: "vincent",
+      email: "vincent@vincent.com"
+    )
+
+    expect{
+      User.create!(
+        username: "vincent",
+        password: "vincent",
+        email: "vince@vince.com"
+      )
+    }.to raise_error ActiveRecord::RecordInvalid   
+  end
+
+  it "cannot be created using email that already exists" do
+    User.destroy_all
+
+    user1 = User.create!(
+      username: "vincent",
+      password: "vincent",
+      email: "vincent@vincent.com"
+    )
+
+    expect{
+      User.create!(
+        username: "vince",
+        password: "vincent",
+        email: "vincent@vincent.com"
+      )
+    }.to raise_error ActiveRecord::RecordInvalid   
+  end  
+
   it "can have appointments" do
     User.destroy_all
 
