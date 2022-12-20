@@ -238,3 +238,5 @@ david_profile = PatientProfile.create!(
     )    
 end
 
+puts "Seeding completed!"
+
