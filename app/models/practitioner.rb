@@ -7,7 +7,7 @@ class Practitioner < ApplicationRecord
     has_many :department_practitioners, dependent: :destroy
     has_many :departments, through: :department_practitioners, dependent: :destroy
 
-    validates :username, presence: true
+    validates :username, presence: true, uniqueness: true
     validates :password, presence: true
-    validates :email, presence: true
+    validates :email, presence: true, uniqueness: true
 end

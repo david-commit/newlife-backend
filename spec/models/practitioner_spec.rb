@@ -17,6 +17,42 @@ RSpec.describe Practitioner, type: :model do
     expect{Practitioner.create!()}.to raise_error ActiveRecord::RecordInvalid  
   end
 
+    it "cannot be created using username that already exists" do
+    Practitioner.destroy_all
+
+    practitioner = Practitioner.create!(
+      username: "vincent",
+      password: "vincent",
+      email: "vincent@vincent.com"
+    )
+
+    expect{
+      Practitioner.create!(
+        username: "vincent",
+        password: "vincent",
+        email: "vince@vince.com"
+      )
+    }.to raise_error ActiveRecord::RecordInvalid   
+  end
+
+  it "cannot be created using email that already exists" do
+    Practitioner.destroy_all
+
+    practitioner = Practitioner.create!(
+      username: "vincent",
+      password: "vincent",
+      email: "vincent@vincent.com"
+    )
+
+    expect{
+      Practitioner.create!(
+        username: "vince",
+        password: "vincent",
+        email: "vincent@vincent.com"
+      )
+    }.to raise_error ActiveRecord::RecordInvalid   
+  end 
+
   it "can have appointments" do
     Practitioner.destroy_all
 
