@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
     has_many :appointments, dependent: :destroy
     has_many :practitioners, through: :appointments, dependent: :destroy
-    has_one :patient_profile, dependent: :destroy
+    has_many :patient_profiles, dependent: :destroy
     has_many :orders, dependent: :destroy
     
     validates :username, presence: true, uniqueness: true
