@@ -1,0 +1,2 @@
+class PatientProfilesController < ApplicationController
+end
