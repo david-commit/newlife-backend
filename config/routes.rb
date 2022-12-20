@@ -6,6 +6,21 @@ Rails.application.routes.draw do
   post '/practitioner/login', to: 'practitioner_sessions#create'
   delete '/practitioner/logout', to: 'practitioner_sessions#destroy'
 
+  resources :messages, only: [:create]
+  resources :appointments, only: [:create]
+  resources :orders, only: [:create, :update]
+  resources :payments, only: [:create, :update]
+
+  resources :users, only: [:show] do
+
+    resources :appointments, only: [:index, :show]
+    resources :orders, only: [:index, :show]
+    resources :payments, only: [:index, :show]
+
+    resources :appointments, only: [:show] do
+      resources :messages, only: [:index, :show]
+    end
+  end
   
   # resources :departments
   # resources :practitioner_profiles
