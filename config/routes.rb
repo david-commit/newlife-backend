@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
   resources :appointments, only: [:create, :destroy, :update]
   resources :orders, only: [:create, :update, :destroy]
-  resources :payments, only: [:create, :update]
+  resources :payments, only: [:create, :update, :destroy, :index, :show]
   resources :shopping_carts, only: [:create, :update, :destroy, :show]
   resources :departments, only: [:index, :show]
   resources :patient_profiles, only: [:create, :index, :show, :update, :destroy]
@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :appointments, only: [:index, :show]
     resources :orders, only: [:index, :show]
-    resources :payments, only: [:index, :show]
     resources :shopping_carts, only: [:show, :index]
 
     resources :appointments, only: [:show] do
