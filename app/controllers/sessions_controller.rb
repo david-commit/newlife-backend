@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
     def create
         user = User.find_by!(username: params[:username])
-        render json: user.authenticate(params[:password]), status: :ok
+        render json: user.authenticate(params[:password]), status: :created
     end
 
     def destroy

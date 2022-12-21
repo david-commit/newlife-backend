@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  post '/practitioner/signup', to: 'practitioners#create'
   post '/practitioner/login', to: 'practitioner_sessions#create'
   delete '/practitioner/logout', to: 'practitioner_sessions#destroy'
 

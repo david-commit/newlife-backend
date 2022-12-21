@@ -3,7 +3,7 @@ class PractitionerSessionsController < ApplicationController
 
     def create
         practitioner = Practitioner.find_by!(username: params[:username])
-        render json: practitioner.authenticate(params[:password]), status: :ok
+        render json: practitioner.authenticate(params[:password]), status: :created
     end
 
     def destroy
