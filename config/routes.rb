@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:create]
   resources :appointments, only: [:create]
-  resources :orders, only: [:create, :update]
+  resources :orders, only: [:create, :update, :destroy]
   resources :payments, only: [:create, :update]
 
   resources :users, only: [:show] do

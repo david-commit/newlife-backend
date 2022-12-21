@@ -4,5 +4,5 @@ class Order < ApplicationRecord
   has_many :shopping_carts, dependent: :destroy
   has_many :products, through: :shopping_carts, dependent: :destroy
 
-  validates :user, presence: true
+  validates :user_id, presence: true
 end
