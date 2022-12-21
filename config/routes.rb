@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :payments, only: [:create, :update]
   resources :shopping_carts, only: [:create, :update, :destroy, :show]
   resources :departments, only: [:index, :show]
+  resources :patient_profiles, only: [:create, :index, :show, :update, :destroy]
 
   resources :users, only: [:show] do
 
