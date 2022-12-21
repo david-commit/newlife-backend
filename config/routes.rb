@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index]
   resources :messages, only: [:create]
-  resources :appointments, only: [:create]
+  resources :appointments, only: [:create, :destroy, :update]
   resources :orders, only: [:create, :update, :destroy]
   resources :payments, only: [:create, :update]
   resources :shopping_carts, only: [:create, :update, :destroy, :show]
@@ -23,6 +23,10 @@ Rails.application.routes.draw do
     resources :appointments, only: [:show] do
       resources :messages, only: [:index, :show]
     end
+  end
+
+  resources :practitioners, only: [:show] do
+      resources :appointments, only: [:index, :show] 
   end
   
   # resources :departments
