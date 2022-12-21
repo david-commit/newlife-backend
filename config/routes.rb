@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/practitioner/login', to: 'practitioner_sessions#create'
   delete '/practitioner/logout', to: 'practitioner_sessions#destroy'
 
+  resources :products, only: [:index]
   resources :messages, only: [:create]
   resources :appointments, only: [:create]
   resources :orders, only: [:create, :update, :destroy]
