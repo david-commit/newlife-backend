@@ -11,12 +11,14 @@ Rails.application.routes.draw do
   resources :appointments, only: [:create]
   resources :orders, only: [:create, :update, :destroy]
   resources :payments, only: [:create, :update]
+  resources :shopping_carts, only: [:create, :update, :destroy, :show]
 
   resources :users, only: [:show] do
 
     resources :appointments, only: [:index, :show]
     resources :orders, only: [:index, :show]
     resources :payments, only: [:index, :show]
+    resources :shopping_carts, only: [:show, :index]
 
     resources :appointments, only: [:show] do
       resources :messages, only: [:index, :show]
