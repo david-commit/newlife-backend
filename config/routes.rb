@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   resources :shopping_carts, only: [:create, :update, :destroy, :show]
   resources :departments, only: [:index, :show]
   resources :patient_profiles, only: [:create, :index, :show, :update, :destroy]
+  resources :practitioner_profiles, only: [:create, :index, :show, :update, :destroy]
 
   resources :users, only: [:show] do
-
     resources :appointments, only: [:index, :show]
     resources :orders, only: [:index, :show]
     resources :payments, only: [:index, :show]
