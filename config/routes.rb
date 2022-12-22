@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :responses
   post '/signup', to: 'users#create'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
