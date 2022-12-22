@@ -3,7 +3,7 @@ class Practitioner < ApplicationRecord
 
     has_many :appointments, dependent: :destroy
     has_many :users, through: :appointments, dependent: :destroy
-    has_one :practitioner_profile, dependent: :destroy
+    has_many :practitioner_profiles, dependent: :destroy
     belongs_to :department
 
     validates :username, presence: true, uniqueness: true

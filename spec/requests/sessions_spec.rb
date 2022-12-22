@@ -6,7 +6,7 @@ RSpec.describe "Sessions", type: :request do
       post '/signup', params: {"username": "what", "password": "what", "email": "what@what.com"}
       post '/login', params: {"username": "what", "password": "what", "email": "what@what.com"}
 
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(201)
     end
 
     it "allows one to logout" do

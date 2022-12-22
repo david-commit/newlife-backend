@@ -1,9 +1,9 @@
-class SessionsController < ApplicationController
+class PractitionerSessionsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
     def create
-        user = User.find_by!(username: params[:username])
-        render json: user.authenticate(params[:password]), status: :created
+        practitioner = Practitioner.find_by!(username: params[:username])
+        render json: practitioner.authenticate(params[:password]), status: :created
     end
 
     def destroy
@@ -18,5 +18,5 @@ class SessionsController < ApplicationController
 
     def record_not_found(not_found)
         render json: not_found, status: 404
-    end    
+    end      
 end

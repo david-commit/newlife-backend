@@ -3,4 +3,5 @@ class UserSerializer < ActiveModel::Serializer
 
   has_many :orders
   has_many :appointments
+  has_many :patient_profiles
 end

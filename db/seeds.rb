@@ -197,11 +197,13 @@ appointment3 = Appointment.create!(
 puts "10. seeding messages..."
 5.times do
     sender = [user1, practitioner1].sample
-    receiver = (sender.id == user1.id)? practitioner1 : user1
+    receiver = (sender.class.to_s == "User")? practitioner1 : user1
     Message.create!(
         appointment_id: appointment1.id,
         sender_id: sender.id,
+        sender_class: sender.class.to_s,
         receiver_id: receiver.id,
+        receiver_class: receiver.class.to_s,
         content: Faker::Lorem.paragraph(sentence_count: rand(1..3))
     )
 end

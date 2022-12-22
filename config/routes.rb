@@ -3,6 +3,34 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
+  post '/practitioner/signup', to: 'practitioners#create'
+  post '/practitioner/login', to: 'practitioner_sessions#create'
+  delete '/practitioner/logout', to: 'practitioner_sessions#destroy'
+
+  resources :products, only: [:index]
+  resources :messages, only: [:create]
+  resources :appointments, only: [:create, :destroy, :update]
+  resources :orders, only: [:create, :update, :destroy]
+  resources :payments, only: [:create, :update, :destroy, :index, :show]
+  resources :shopping_carts, only: [:create, :update, :destroy, :show]
+  resources :departments, only: [:index, :show]
+  resources :patient_profiles, only: [:create, :index, :show, :update, :destroy]
+  resources :practitioner_profiles, only: [:create, :index, :show, :update, :destroy]
+
+  resources :users, only: [:show] do
+    resources :appointments, only: [:index, :show]
+    resources :orders, only: [:index, :show]
+    resources :shopping_carts, only: [:show, :index]
+
+    resources :appointments, only: [:show] do
+      resources :messages, only: [:index, :show]
+    end
+  end
+
+  resources :practitioners, only: [:show] do
+      resources :appointments, only: [:index, :show] 
+  end
   
   # resources :departments
   # resources :practitioner_profiles

@@ -6,14 +6,14 @@ RSpec.describe Practitioner, type: :model do
     department = Department.create(name: "Human Resource")
 
     Practitioner.destroy_all
-    user = Practitioner.create!(
+    practitioner = Practitioner.create!(
       username: "vincent",
       password: "vincent",
       email: "vincent@vincent.com",
       department_id: department.id
     )
 
-    expect(user.id.nil?).to eql(false)
+    expect(practitioner.id.nil?).to eql(false)
   end
 
   it "cannot be created with invalid inputs (one of username, email, or password is missing)" do
@@ -70,13 +70,13 @@ RSpec.describe Practitioner, type: :model do
     department = Department.create(name: "Human Resource")
 
     Practitioner.destroy_all
-    user = Practitioner.create!(
+    practitioner = Practitioner.create!(
       username: "vincent",
       password: "vincent",
       email: "vincent@vincent.com",
       department_id: department.id
     )
 
-    expect(user.appointments).to be_kind_of(ActiveRecord::Associations::CollectionProxy)
+    expect(practitioner.appointments).to be_kind_of(ActiveRecord::Associations::CollectionProxy)
   end
 end

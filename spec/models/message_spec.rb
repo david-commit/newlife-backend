@@ -31,7 +31,9 @@ RSpec.describe Message, type: :model do
     message = Message.create!(
       appointment_id: appointment.id,
       sender_id: user.id,
+      sender_class: user.class.to_s,
       receiver_id: practitioner.id,
+      receiver_class: practitioner.class.to_s,
       content: "Hey, I would like to have an appointment with you this week. When do I expect you to be free?"
     )
 
@@ -71,7 +73,9 @@ RSpec.describe Message, type: :model do
     message = Message.create!(
       appointment_id: appointment.id,
       sender_id: user.id,
+      sender_class: user.class.to_s,
       receiver_id: practitioner.id,
+      receiver_class: practitioner.class.to_s,
       content: "Hey, I would like to have an appointment with you this week. When do I expect you to be free?"
     )
     
@@ -107,7 +111,9 @@ RSpec.describe Message, type: :model do
     message = Message.create!(
       appointment_id: appointment.id,
       sender_id: user.id,
+      sender_class: user.class.to_s,
       receiver_id: practitioner.id,
+      receiver_class: practitioner.class.to_s,
       content: "Hey, I would like to have an appointment with you this week. When do I expect you to be free?"
     )
 

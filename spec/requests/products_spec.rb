@@ -1,7 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "Products", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
+
+  it "can be viewed" do
+
+    headers = {"Accept": "application/json"}
+    get '/products'
+    
+    expect(JSON.parse(response.body)).to be_kind_of(Array)
   end
 end

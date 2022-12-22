@@ -1,3 +1,6 @@
 class PractitionerSerializer < ActiveModel::Serializer
-  attributes :id, :username, :password_digest, :email
+  attributes :id, :username, :email
+
+  has_many :appointments
+  has_many :practitioner_profiles
 end
