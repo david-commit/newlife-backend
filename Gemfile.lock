@@ -95,6 +95,7 @@ GEM
     irb (1.6.1)
       reline (>= 0.3.0)
     jsonapi-renderer (0.2.2)
+    jwt (2.6.0)
     language_server-protocol (3.17.0.2)
     loofah (2.19.1)
       crass (~> 1.0.2)
@@ -202,6 +203,7 @@ DEPENDENCIES
   bootsnap
   debug
   faker
+  jwt (~> 2.6)
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
