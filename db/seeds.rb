@@ -29,8 +29,8 @@ order1 = Order.create!(
 )
 
 
-puts "3. seeding payment..."
-payment1 = Payment.create!(payment_method: "mpesa", order_id: order1.id)
+# puts "3. seeding payment..."
+# payment1 = Payment.create!(payment_method: "mpesa", order_id: order1.id)
 
 
 puts "4. seeding products..."
@@ -134,7 +134,7 @@ other_practitioners = []
         password: Faker::Internet.password,
         email: Faker::Internet.email,
         department_id:  departments.sample.id
-    )    
+    )
 end
 
 
@@ -234,8 +234,8 @@ david_profile = PractitionerProfile.create!(
         blood_group: "B-",
         weight: (rand()+rand(50..100)).round(2),
         phone_number: "0756291474",
-        bmi: (rand()+rand(15..30)).round(2)        
-    )    
+        bmi: (rand()+rand(15..30)).round(2)
+    )
 end
 
 puts "Seeding completed!"
