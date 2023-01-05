@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-  skip_before_action :authorized, only: [:create]
+  skip_before_action :authorized, only: %i[create index]
 
   def index
     render json: User.all
@@ -41,6 +41,4 @@ class UsersController < ApplicationController
   def record_not_found(not_found)
     render json: not_found, status: 404
   end
-
-
 end
