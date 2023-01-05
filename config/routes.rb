@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :responses
   post "/signup", to: "users#create"
-  post "/login", to: "sessions#create"
+  post "/login", to: "authentication#create"
   delete "/logout", to: "sessions#destroy"
   post "/me", to: "users#show"
 
