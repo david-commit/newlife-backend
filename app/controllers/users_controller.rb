@@ -48,7 +48,5 @@ class UsersController < ApplicationController
     render json: not_found, status: 404
   end
 
-  def user_login_params
-    params.require(:user).permit(:email, :password)
-  end
+
 end
