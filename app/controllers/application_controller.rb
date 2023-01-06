@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
     Rails.application.credentials.jwt_key
   end
 
-  def encode_token(user)
+  def issue_token(user)
     JWT.encode({ user_id: user.id }, jwt_key, "HS256")
   end
 
