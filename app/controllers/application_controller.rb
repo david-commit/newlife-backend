@@ -5,22 +5,19 @@ class ApplicationController < ActionController::API
     Rails.application.credentials.jwt_key
   end
 
-  def encode_token(payload)
-    JWT.encode(payload, "my_s3cr3t")
+  def encode_token(user)
+    JWT.encode({ user_id: user.id }, jwt_key, "HS256")
   end
 
-  def auth_header
+  def token
     request.headers["Authorization"]
   end
 
   def decoded_token
-    if auth_header
-      token = auth_header.split(" ").last
-      begin
-        JWT.decode(token, "my_s3cr3t", true, algorithm: "HS256")
-      rescue JWT::DecodeError
-        nil
-      end
+    begin
+      JWT.decode(token, jwt_key, true, { algorithm: "HS256" })
+    rescue => exception
+      [{ error: "Invalid Token" }]
     end
   end
 
