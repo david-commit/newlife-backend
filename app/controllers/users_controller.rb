@@ -21,8 +21,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    # render json: User.find(session[:user_id]), status: :ok
-    render json: User.find(params[:id])
+    user = User.find(params[:id])
+    if user
+      render json: user
+    else
+      render json: { error: "User could not be found" }
+    end
   end
 
   private

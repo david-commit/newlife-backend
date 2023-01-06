@@ -19,14 +19,7 @@ class AuthenticationController < ApplicationController
     end
   end
 
-  def show
-    user = User.find(params[:id])
-    if user
-      render json: user
-    else
-      render json: { error: "User could not be found" }
-    end
-  end
+  
 
   private
 
