@@ -19,7 +19,13 @@ class AuthenticationController < ApplicationController
     end
   end
 
-  
+  def show
+    if logged_in?
+      render json: current_user
+    else
+      render json: { error: "Please log in" }
+    end
+  end
 
   private
 
