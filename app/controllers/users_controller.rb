@@ -1,17 +1,21 @@
 class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-  skip_before_action :authorized, only: %i[create index]
+  # skip_before_action :authorized, only: %i[create index]
 
   def index
     render json: User.all
   end
 
   def create
-    @user = User.create(user_params)
-    if @user.valid?
-      @token = encode_token(user_id: @user_id)
-      render json: { user: UserSerializer.new(@user) }, status: :created
+    user = User.create(user_params)
+    if user.valid?
+      token = issue_token(user)
+      render json: {
+               user: UserSerializer.new(user),
+               jwt: token
+             },
+             status: :created
     else
       render json: {
                error: "failed to create user"
@@ -21,8 +25,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    # render json: User.find(session[:user_id]), status: :ok
-    render json: User.find(params[:id])
+    user = User.find(params[:id])
+    if user
+      render json: user
+    else
+      render json: { error: "User could not be found" }
+    end
   end
 
   private
