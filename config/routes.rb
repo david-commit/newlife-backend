@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :responses
   post "/signup", to: "users#create"
   post "/login", to: "authentication#create"
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
   post "/practitioner/login", to: "practitioner_sessions#create"
   delete "/practitioner/logout", to: "practitioner_sessions#destroy"
 
-  resources :products, only: [:index]
+  resources :products, only: [:index, :show]
   resources :messages, only: [:create]
   resources :appointments, only: %i[create destroy update]
   resources :orders, only: %i[create update destroy]

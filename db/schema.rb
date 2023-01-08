@@ -118,6 +118,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_194826) do
     t.string "name"
     t.string "category"
     t.float "price"
+    t.string "image"
+    t.integer "quantity"
+    t.integer "stock"
+    t.integer "rating"
+    t.text "description"
+    t.string "dosage"
+    t.string "effects"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
