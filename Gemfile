@@ -49,3 +49,7 @@ group :development do
   # gem "spring"
 end
 
+
+gem "jwt", "~> 2.6"
+
+gem "byebug", "~> 11.1"
