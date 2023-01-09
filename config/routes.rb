@@ -12,13 +12,16 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show]
   resources :messages, only: [:create]
-  resources :appointments, only: %i[create destroy update]
-  resources :orders, only: %i[create update destroy]
-  resources :payments, only: %i[create update destroy index show]
-  resources :shopping_carts, only: %i[create update destroy show]
-  resources :departments, only: %i[index show]
-  resources :patient_profiles, only: %i[create index show update destroy]
-  resources :practitioner_profiles, only: %i[create index show update destroy]
+  resources :appointments, only: [:create, :destroy, :update]
+  resources :orders, only: [:create, :update, :destroy]
+  resources :payments, only: [:create, :update, :destroy, :index, :show]
+  resources :shopping_carts, only: [:create, :update, :destroy, :show]
+  resources :departments, only: [:index, :show]
+  resources :patient_profiles, only: [:create, :index, :show, :update, :destroy]
+  resources :practitioner_profiles, only: [:create, :index, :show, :update, :destroy]
+  resources :reviews, only: [:create, :index, :show, :update, :destroy]
+  resources :side_effects, only: [:create, :index, :show, :update, :destroy]
+  resources :dosage_considerations, only: [:create, :index, :show, :update, :destroy]
 
   resources :users, only: [:show] do
     resources :appointments, only: %i[index show]
