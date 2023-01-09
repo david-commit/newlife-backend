@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  resources :reviews
-  resources :side_effects
-  resources :dosage_considerations
   post '/signup', to: 'users#create'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
@@ -19,6 +16,9 @@ Rails.application.routes.draw do
   resources :departments, only: [:index, :show]
   resources :patient_profiles, only: [:create, :index, :show, :update, :destroy]
   resources :practitioner_profiles, only: [:create, :index, :show, :update, :destroy]
+  resources :reviews, only: [:create, :index, :show, :update, :destroy]
+  resources :side_effects, only: [:create, :index, :show, :update, :destroy]
+  resources :dosage_considerations, only: [:create, :index, :show, :update, :destroy]
 
   resources :users, only: [:show] do
     resources :appointments, only: [:index, :show]
