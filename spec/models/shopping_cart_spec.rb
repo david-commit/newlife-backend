@@ -17,7 +17,7 @@ RSpec.describe ShoppingCart, type: :model do
     )    
 
     Payment.destroy_all
-    payment = Payment.create!(payment_method: "mpesa", order_id: order.id)
+    payment = Payment.create!(business_short_code: "mpesa", order_id: order.id)
     expect(payment.id.nil?).to eql(false)
 
     Product.destroy_all
@@ -55,7 +55,7 @@ RSpec.describe ShoppingCart, type: :model do
     )    
 
     Payment.destroy_all
-    payment = Payment.create!(payment_method: "mpesa", order_id: order.id)
+    payment = Payment.create!(business_short_code: "mpesa", order_id: order.id)
     expect(payment.id.nil?).to eql(false)
 
     Product.destroy_all

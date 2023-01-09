@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_09_144602) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_09_154213) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,7 +79,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_144602) do
   end
 
   create_table "payments", force: :cascade do |t|
-    t.string "payment_method"
+    t.integer "business_short_code"
+    t.string "password"
+    t.datetime "timestamp"
+    t.string "transaction_type"
+    t.bigint "party_A"
+    t.bigint "party_B"
+    t.integer "phone_number"
+    t.string "callback_url"
+    t.string "account_reference"
+    t.string "transaction_desc"
+    t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "order_id", null: false
@@ -116,18 +126,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_144602) do
     t.string "name"
     t.string "category"
     t.float "price"
-    t.string "image"
-    t.integer "quantity"
-    t.integer "stock"
-    t.integer "rating"
-    t.text "description"
-    t.string "dosage"
-    t.string "effects"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description"
     t.string "image"
     t.string "dosage"
+    t.integer "stock"
   end
 
   create_table "responses", force: :cascade do |t|

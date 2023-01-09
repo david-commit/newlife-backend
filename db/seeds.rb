@@ -29,13 +29,12 @@ order1 = Order.create!(
 )
 
 
-# puts "3. seeding payment..."
-# payment1 = Payment.create!(payment_method: "mpesa", order_id: order1.id)
+puts "3. seeding payment..."
+payment1 = Payment.create!(business_short_code: "whatever", order_id: order1.id)
 
 
 puts "4. seeding products..."
 # https://www.drugs.com/medical_conditions.html
-require 'json'
 
 products = []
 
@@ -44,14 +43,9 @@ bpd_drugs.length.times do |i|
     products << Product.create!(
         name: bpd_drugs[i],
         category: "Bipolar Disorder",
-        price: rand(0..1000).round(2),
+        price: rand()*rand(1..1000),
         image: "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
-        quantity: 1,
-        stock: rand(0..100),
-        rating: rand(0..5),
-        description: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
-        dosage: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
-        effects: "Constipation, Nausea, Drowsiness, Itching, Sweating"
+        stock: rand(0..100)
     )
 end
 
@@ -60,14 +54,9 @@ cancer_drugs.length.times do |i|
     products << Product.create!(
         name: cancer_drugs[i],
         category: "Cancer",
-        price: rand(0..1000).round(2),
+        price: rand()*rand(1..1000),
         image: "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
-        quantity: 1,
-        stock: rand(0..100),
-        rating: rand(0..5),
-        description: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
-        dosage: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
-        effects: "Constipation, Nausea, Drowsiness, Itching, Sweating"
+        stock: rand(0..100)
     )
 end
 
@@ -76,14 +65,9 @@ depression_drugs.length.times do |i|
     products << Product.create!(
         name: depression_drugs[i],
         category: "Depression",
-        price: rand(0..1000).round(2),
+        price: rand()*rand(1..1000),
         image: "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
-        quantity: 1,
-        stock: rand(0..100),
-        rating: rand(0..5),
-        description: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
-        dosage: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
-        effects: "Constipation, Nausea, Drowsiness, Itching, Sweating"
+        stock: rand(0..100)
     )
 end
 
@@ -92,14 +76,9 @@ anxiety_drugs.length.times do |i|
     products << Product.create!(
         name: anxiety_drugs[i],
         category: "Anxiety",
-        price: rand(0..1000).round(2),
+        price: rand()*rand(1..1000),
         image: "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
-        quantity: 1,
-        stock: rand(0..100),
-        rating: rand(0..5),
-        description: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
-        dosage: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
-        effects: "Constipation, Nausea, Drowsiness, Itching, Sweating"
+        stock: rand(0..100)
     )
 end
 
@@ -108,14 +87,9 @@ gastrointestinal_surgery_drugs.length.times do |i|
     products << Product.create!(
         name: gastrointestinal_surgery_drugs[i],
         category: "Gastrointestinal Surgery",
-        price: rand(0..1000).round(2),
+        price: rand()*rand(1..1000),
         image: "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
-        quantity: 1,
-        stock: rand(0..100),
-        rating: rand(0..5),
-        description: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
-        dosage: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
-        effects: "Constipation, Nausea, Drowsiness, Itching, Sweating"
+        stock: rand(0..100)
     )
 end
 
@@ -124,14 +98,9 @@ erectile_dysfunction_drugs.length.times do |i|
     products << Product.create!(
         name: erectile_dysfunction_drugs[i],
         category: "Erectile Dysfunction",
-        price: rand(0..1000).round(2),
+        price: rand()*rand(1..1000),
         image: "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
-        quantity: 1,
-        stock: rand(0..100),
-        rating: rand(0..5),
-        description: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
-        dosage: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
-        effects: "Constipation, Nausea, Drowsiness, Itching, Sweating"
+        stock: rand(0..100)
     )
 end
 
@@ -140,14 +109,9 @@ diabetes_1_drugs.length.times do |i|
     products << Product.create!(
         name: diabetes_1_drugs[i],
         category: "Diabetes Type 1",
-        price: rand(0..1000).round(2),
+        price: rand()*rand(1..1000),
         image: "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
-        quantity: 1,
-        stock: rand(0..100),
-        rating: rand(0..5),
-        description: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
-        dosage: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
-        effects: "Constipation, Nausea, Drowsiness, Itching, Sweating"
+        stock: rand(0..100)
     )
 end
 
@@ -184,7 +148,7 @@ other_practitioners = []
         password: Faker::Internet.password,
         email: Faker::Internet.email,
         department_id:  departments.sample.id
-    )
+    )    
 end
 
 
@@ -284,8 +248,8 @@ david_profile = PractitionerProfile.create!(
         blood_group: "B-",
         weight: (rand()+rand(50..100)).round(2),
         phone_number: "0756291474",
-        bmi: (rand()+rand(15..30)).round(2)
-    )
+        bmi: (rand()+rand(15..30)).round(2)        
+    )    
 end
 
 puts "Seeding completed!"
