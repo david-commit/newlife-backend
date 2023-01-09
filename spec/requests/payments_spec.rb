@@ -19,7 +19,7 @@ RSpec.describe "Payments", type: :request do
 
     headers = {"Content-Type": "application/json", "Accept": "application/json"}
     
-    post "/payments", params: {"payment_method": "mpesa", "order_id": order.id}
+    post "/payments", params: {"business_short_code": "whatever", "order_id": order.id}
 
     expect(response).to have_http_status(201)
   end
@@ -42,7 +42,7 @@ RSpec.describe "Payments", type: :request do
 
     Payment.destroy_all
     payment = Payment.create!(
-      payment_method: "mpesa",
+      business_short_code: "whatever",
       order_id: order.id
     )
     
@@ -74,7 +74,7 @@ RSpec.describe "Payments", type: :request do
 
     Payment.destroy_all
     payment = Payment.create!(
-      payment_method: "mpesa",
+      business_short_code: "whatever",
       order_id: order.id
     )
     

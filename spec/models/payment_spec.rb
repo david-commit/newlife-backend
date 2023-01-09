@@ -17,7 +17,7 @@ RSpec.describe Payment, type: :model do
 
     Payment.destroy_all
     payment = Payment.create!(
-      payment_method: "mpesa",
+      business_short_code: "whatever",
       order_id: order.id
     )
     
