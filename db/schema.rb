@@ -121,6 +121,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_115049) do
     t.string "description"
   end
 
+  create_table "responses", force: :cascade do |t|
+    t.bigint "payment_id"
+    t.string "merchant_request_id"
+    t.string "response_description"
+    t.integer "response_code"
+    t.string "customer_message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payment_id"], name: "index_responses_on_payment_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
     t.string "description_header"
@@ -167,6 +178,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_115049) do
   add_foreign_key "payments", "orders"
   add_foreign_key "practitioner_profiles", "practitioners"
   add_foreign_key "practitioners", "departments"
+  add_foreign_key "responses", "payments"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
   add_foreign_key "shopping_carts", "orders"
