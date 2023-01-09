@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :reviews
+  resources :side_effects
+  resources :dosage_considerations
   post '/signup', to: 'users#create'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

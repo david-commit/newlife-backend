@@ -1,0 +1,2 @@
+class DosageConsiderationsController < ApplicationController
+end

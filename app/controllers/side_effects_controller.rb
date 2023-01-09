@@ -1,0 +1,2 @@
+class SideEffectsController < ApplicationController
+end

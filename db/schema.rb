@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_20_170556) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_09_104744) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_170556) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "dosage_considerations", force: :cascade do |t|
+    t.string "consideration"
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_dosage_considerations_on_product_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -110,6 +118,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_170556) do
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.string "description_header"
+    t.string "description_content"
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_reviews_on_product_id"
   end
 
   create_table "shopping_carts", force: :cascade do |t|
@@ -119,6 +138,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_170556) do
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_shopping_carts_on_order_id"
     t.index ["product_id"], name: "index_shopping_carts_on_product_id"
+  end
+
+  create_table "side_effects", force: :cascade do |t|
+    t.string "side_effect"
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_side_effects_on_product_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -131,12 +158,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_170556) do
 
   add_foreign_key "appointments", "practitioners"
   add_foreign_key "appointments", "users"
+  add_foreign_key "dosage_considerations", "products"
   add_foreign_key "messages", "appointments"
   add_foreign_key "orders", "users"
   add_foreign_key "patient_profiles", "users"
   add_foreign_key "payments", "orders"
   add_foreign_key "practitioner_profiles", "practitioners"
   add_foreign_key "practitioners", "departments"
+  add_foreign_key "reviews", "products"
   add_foreign_key "shopping_carts", "orders"
   add_foreign_key "shopping_carts", "products"
+  add_foreign_key "side_effects", "products"
 end
