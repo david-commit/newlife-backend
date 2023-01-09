@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   resources :responses
   post "/signup", to: "users#create"
   post "/login", to: "authentication#create"
@@ -9,6 +8,10 @@ Rails.application.routes.draw do
   post "/practitioner/signup", to: "practitioners#create"
   post "/practitioner/login", to: "practitioner_sessions#create"
   delete "/practitioner/logout", to: "practitioner_sessions#destroy"
+
+  post "admin/signup", to: "admins#create"
+  get "admin/login", to: "admins#show"
+  delete "admin/delete_account", to: "admins#destroy"
 
   resources :products, only: [:index, :show]
   resources :messages, only: [:create]
@@ -23,6 +26,10 @@ Rails.application.routes.draw do
   resources :side_effects, only: [:create, :index, :show, :update, :destroy]
   resources :dosage_considerations, only: [:create, :index, :show, :update, :destroy]
   resources :users, only: [:destroy]
+
+  resources :admins, only: [:show] do
+    resources :products, only: [:create, :index, :show, :update, :destroy]
+  end
 
   resources :users, only: [:show] do
     resources :appointments, only: %i[index show]
@@ -47,7 +54,7 @@ Rails.application.routes.draw do
   # resources :shopping_carts
   # resources :products
   # resources :orders
-  resources :users
+  # resources :users
   # resources :payments
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

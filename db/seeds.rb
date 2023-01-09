@@ -7,6 +7,12 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Start seeding..."
+puts "0. seeding admin..."
+admin = Admin.create!(
+    username: "admin",
+    password: "admin",
+    email: "admin@newlife.com"
+)
 
 puts "1. seeding user..."
 user1 = User.create!(
