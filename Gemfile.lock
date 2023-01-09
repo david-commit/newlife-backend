@@ -72,6 +72,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
     bcrypt (3.1.18)
+    bcrypt (3.1.18-java)
     bootsnap (1.15.0)
       msgpack (~> 1.2)
     builder (3.2.4)
@@ -80,6 +81,7 @@ GEM
     concurrent-ruby (1.1.10)
     crass (1.0.6)
     date (3.3.3)
+    date (3.3.3-java)
     debug (1.7.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
@@ -108,8 +110,10 @@ GEM
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
+    mini_portile2 (2.8.1)
     minitest (5.16.3)
     msgpack (1.6.0)
+    msgpack (1.6.0-java)
     net-imap (0.3.2)
       date
       net-protocol
@@ -120,13 +124,28 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
+    nio4r (2.5.8-java)
+    nokogiri (1.13.10)
+      mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.13.10-java)
+      racc (~> 1.4)
+    nokogiri (1.13.10-x64-mingw32)
+      racc (~> 1.4)
+    nokogiri (1.13.10-x86-mingw32)
+      racc (~> 1.4)
     nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     pg (1.4.5)
+    pg (1.4.5-x64-mingw32)
+    pg (1.4.5-x86-mingw32)
     prettier_print (1.1.0)
     puma (5.6.5)
       nio4r (~> 2.0)
+    puma (5.6.5-java)
+      nio4r (~> 2.0)
     racc (1.6.1)
+    racc (1.6.1-java)
     rack (2.2.4)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
@@ -189,12 +208,21 @@ GEM
     timeout (0.3.1)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2022.7)
+      tzinfo (>= 1.0.0)
     websocket-driver (0.7.5)
+      websocket-extensions (>= 0.1.0)
+    websocket-driver (0.7.5-java)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     zeitwerk (2.6.6)
 
 PLATFORMS
+  java
+  ruby
+  x64-mingw32
+  x86-mingw32
+  x86-mswin32
   x86_64-linux
 
 DEPENDENCIES
