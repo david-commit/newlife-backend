@@ -19,6 +19,7 @@ class User < ApplicationRecord
               minimum: 8,
               maximum: 16
             },
+            confirmation: true,
             format: {
               with: /\A(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}\z/,
               message:
@@ -31,5 +32,6 @@ class User < ApplicationRecord
             uniqueness: {
               message: "A user with that email already exists"
             }
+
 end
 
