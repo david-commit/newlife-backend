@@ -6,7 +6,7 @@ RSpec.describe "Users", type: :request do
     User.find_by(email: "email")&.destroy_all
 
     headers = {"ContentType": "application/json"}
-    post '/signup', params: {"username": "what", "password": "what", "email": "what@what.com"}
+    post '/signup', params: {"username": "what", "password": "Passw0rd3", "email": "what@what.com"}
 
     expect(response).to have_http_status(201)
   end

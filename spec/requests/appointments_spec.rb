@@ -7,7 +7,7 @@ RSpec.describe "Appointments", type: :request do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -17,7 +17,7 @@ RSpec.describe "Appointments", type: :request do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )    
@@ -39,7 +39,7 @@ RSpec.describe "Appointments", type: :request do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -49,7 +49,7 @@ RSpec.describe "Appointments", type: :request do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )    
@@ -71,7 +71,7 @@ RSpec.describe "Appointments", type: :request do
      User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -81,7 +81,7 @@ RSpec.describe "Appointments", type: :request do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )    
@@ -103,13 +103,13 @@ RSpec.describe "Appointments", type: :request do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
     user2 = User.create!(
       username: "enock",
-      password: "enock",
+      password: "Passw0rd3",
       email: "enock@enock.com"
     )    
 
@@ -119,14 +119,14 @@ RSpec.describe "Appointments", type: :request do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )  
     
    practitioner2 = Practitioner.create!(
       username: "enock",
-      password: "enock",
+      password: "Passw0rd3",
       email: "enock@enock.com",
       department_id: department.id
     )     
@@ -157,13 +157,13 @@ RSpec.describe "Appointments", type: :request do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
     user2 = User.create!(
       username: "enock",
-      password: "enock",
+      password: "Passw0rd3",
       email: "enock@enock.com"
     )    
 
@@ -173,14 +173,14 @@ RSpec.describe "Appointments", type: :request do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )  
     
    practitioner2 = Practitioner.create!(
       username: "enock",
-      password: "enock",
+      password: "Passw0rd3",
       email: "enock@enock.com",
       department_id: department.id
     )     

@@ -8,22 +8,22 @@
 
 puts "Start seeding..."
 puts "0. seeding admin..."
-admin = Admin.create!(
-    username: "admin",
-    password: "admin",
-    email: "admin@newlife.com"
-)
+# admin1 = Admin.create!(
+#     username: "admin",
+#     password: "Admin111",
+#     email: "admin@newlife.com"
+# )
 
 puts "1. seeding user..."
 user1 = User.create!(
     username: "vincent",
-    password: "vincent",
+    password: "Vincent111",
     email: "vincent@patient.com"
 )
 
 user2 = User.create!(
     username: "enock",
-    password: "enock",
+    password: "Enock111",
     email: "enock@patient.com"
 )
 

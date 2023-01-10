@@ -15,7 +15,7 @@ RSpec.describe "Admins", type: :request do
     Admin.find_by(username: "what")&.destroy_all
     Admin.find_by(email: "email")&.destroy_all
 
-    what = Admin.create!(email: "what", username: "what", password: "what")
+    what = Admin.create!(email: "what", username: "what", password: "Passw0rd3")
 
     headers = {"ContentType": "application/json"}
     
@@ -28,7 +28,7 @@ RSpec.describe "Admins", type: :request do
    Admin.find_by(username: "what")&.destroy_all
     Admin.find_by(email: "email")&.destroy_all
 
-    what = Admin.create!(email: "what", username: "what", password: "what")
+    what = Admin.create!(email: "what", username: "what", password: "Passw0rd3")
 
     headers = {"ContentType": "application/json"}
     

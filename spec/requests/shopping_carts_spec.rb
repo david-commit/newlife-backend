@@ -5,7 +5,7 @@ RSpec.describe "ShoppingCarts", type: :request do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -32,7 +32,7 @@ RSpec.describe "ShoppingCarts", type: :request do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -71,7 +71,7 @@ RSpec.describe "ShoppingCarts", type: :request do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -103,7 +103,7 @@ RSpec.describe "ShoppingCarts", type: :request do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -135,13 +135,13 @@ RSpec.describe "ShoppingCarts", type: :request do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
     user2 = User.create!(
       username: "enock",
-      password: "enock",
+      password: "Passw0rd3",
       email: "enock@enock.com"
     )    
 

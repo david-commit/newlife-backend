@@ -8,7 +8,7 @@ RSpec.describe "PractitionerProfiles", type: :request do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )
@@ -27,7 +27,7 @@ RSpec.describe "PractitionerProfiles", type: :request do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )
@@ -51,7 +51,7 @@ RSpec.describe "PractitionerProfiles", type: :request do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )
@@ -75,7 +75,7 @@ RSpec.describe "PractitionerProfiles", type: :request do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )
@@ -92,7 +92,7 @@ RSpec.describe "PractitionerProfiles", type: :request do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )
