@@ -3,12 +3,10 @@ require 'rails_helper'
 RSpec.describe "Messages", type: :request do
   it "can be created" do
     User.destroy_all
-    user = User.create!(
-      username: "vincent",
-      password: "Passw0rd3",
-      email: "vincent@vincent.com"
-    )
+    post '/signup', params: {"username": "what", "password": "Passw0rd3", "email": "what@what.com"}
 
+    token = JSON.parse(response.body)["jwt"]
+    user = User.find_by(email: "what@what.com")
 
     Department.destroy_all
     department = Department.create(name: "Human Resource")    
@@ -27,7 +25,6 @@ RSpec.describe "Messages", type: :request do
       practitioner_id: practitioner.id
     )
 
-    headers = {"ContentType": "application/json"}
     post '/messages', params: {
         "content": "Message 1",
         "sender_id": 1,
@@ -35,6 +32,9 @@ RSpec.describe "Messages", type: :request do
         "sender_class": "Practitioner",
         "receiver_class": "User",
         "appointment_id": appointment.id 
+    },headers: {
+      "Accept": "application/json",
+      "Authorization": token
     }
 
     expect(response).to have_http_status(201)
@@ -42,11 +42,10 @@ RSpec.describe "Messages", type: :request do
 
   it "can be viewed (1) Returns an array" do
     User.destroy_all
-    user = User.create!(
-      username: "vincent",
-      password: "Passw0rd3",
-      email: "vincent@vincent.com"
-    )
+    post '/signup', params: {"username": "what", "password": "Passw0rd3", "email": "what@what.com"}
+
+    token = JSON.parse(response.body)["jwt"]
+    user = User.find_by(email: "what@what.com")
 
 
     Department.destroy_all
@@ -75,6 +74,9 @@ RSpec.describe "Messages", type: :request do
       "sender_class": "Practitioner",
       "receiver_class": "User",
       "appointment_id": appointment.id 
+    },headers: {
+      "Accept": "application/json",
+      "Authorization": token
     }
 
     post '/messages', params: {
@@ -84,9 +86,12 @@ RSpec.describe "Messages", type: :request do
       "sender_class": "Practitioner",
       "receiver_class": "User",
       "appointment_id": appointment.id 
+    },headers: {
+      "Accept": "application/json",
+      "Authorization": token
     }
 
-    get "/users/#{user.id}/appointments/#{appointment.id}/messages"
+    get "/users/#{user.id}/appointments/#{appointment.id}/messages", headers: {"Accept": "application/json", "Authorization": token}
 
     expect(JSON.parse(response.body)).to be_kind_of(Array)
   end

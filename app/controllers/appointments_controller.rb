@@ -2,7 +2,6 @@ class AppointmentsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-    # before_action :authorize
     def create
         render json: Appointment.create!(appointment_params), status: :created
     end
@@ -35,10 +34,6 @@ class AppointmentsController < ApplicationController
     end
 
     private
-    def authorize
-        User.find(session[:user_id])
-    end
-
     def practitioner_update_params
         params.permit(:date, :approved)
     end
