@@ -8,7 +8,7 @@ RSpec.describe Practitioner, type: :model do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )
@@ -28,7 +28,7 @@ RSpec.describe Practitioner, type: :model do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )
@@ -36,7 +36,7 @@ RSpec.describe Practitioner, type: :model do
     expect{
       Practitioner.create!(
         username: "vincent",
-        password: "vincent",
+        password: "Passw0rd3",
         email: "vince@vince.com",
         department_id: department.id
       )
@@ -50,7 +50,7 @@ RSpec.describe Practitioner, type: :model do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )
@@ -58,7 +58,7 @@ RSpec.describe Practitioner, type: :model do
     expect{
       Practitioner.create!(
         username: "vince",
-        password: "vincent",
+        password: "Passw0rd3",
         email: "vincent@vincent.com",
         department_id: department.id
       )
@@ -72,7 +72,7 @@ RSpec.describe Practitioner, type: :model do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )

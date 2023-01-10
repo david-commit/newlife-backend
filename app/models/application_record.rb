@@ -1,7 +1,6 @@
 class ApplicationRecord < ActiveRecord::Base
   primary_abstract_class
   require "uri"
-  require "net/http"
   
   def pay_mpesa
     ​

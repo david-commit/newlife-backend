@@ -1,8 +1,6 @@
 class MessagesController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-
-    # before_action :authorize
     
     def create
         render json: Message.create!(message_params), status: :created
@@ -22,10 +20,6 @@ class MessagesController < ApplicationController
 
 
     private
-    def authorize
-        User.find(session[:user_id])
-    end
-
     def message_params
         params.permit(:content, :sender_id, :receiver_id, :appointment_id, :sender_class, :receiver_class)
     end

@@ -2,8 +2,8 @@ class DepartmentsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-    # before_action :authorize
-
+    skip_before_action :authorized, only: [:index, :show]
+    
     def index
         render json: Department.all, status: :ok
     end
