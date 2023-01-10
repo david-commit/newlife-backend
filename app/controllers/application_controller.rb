@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  # before_action :authorized
+  before_action :authorized
 
   def jwt_key
     Rails.application.credentials.jwt_key
