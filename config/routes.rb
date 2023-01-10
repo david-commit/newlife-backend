@@ -9,15 +9,27 @@ Rails.application.routes.draw do
   post "/practitioner/login", to: "practitioner_sessions#create"
   delete "/practitioner/logout", to: "practitioner_sessions#destroy"
 
-  resources :products, only: [:index]
+  post "admin/signup", to: "admins#create"
+  get "admin/login", to: "admins#show"
+  delete "admin/delete_account", to: "admins#destroy"
+
+  resources :products, only: [:index, :show]
   resources :messages, only: [:create]
-  resources :appointments, only: %i[create destroy update]
-  resources :orders, only: %i[create update destroy]
-  resources :payments, only: %i[create update destroy index show]
-  resources :shopping_carts, only: %i[create update destroy show]
-  resources :departments, only: %i[index show]
-  resources :patient_profiles, only: %i[create index show update destroy]
-  resources :practitioner_profiles, only: %i[create index show update destroy]
+  resources :appointments, only: [:create, :destroy, :update]
+  resources :orders, only: [:create, :update, :destroy]
+  resources :payments, only: [:create, :update, :destroy, :index, :show]
+  resources :shopping_carts, only: [:create, :update, :destroy, :show]
+  resources :departments, only: [:index, :show]
+  resources :patient_profiles, only: [:create, :index, :show, :update, :destroy]
+  resources :practitioner_profiles, only: [:create, :index, :show, :update, :destroy]
+  resources :reviews, only: [:create, :index, :show, :update, :destroy]
+  resources :side_effects, only: [:create, :index, :show, :update, :destroy]
+  resources :dosage_considerations, only: [:create, :index, :show, :update, :destroy]
+  resources :users, only: [:destroy]
+
+  resources :admins, only: [:show] do
+    resources :products, only: [:create, :index, :show, :update, :destroy]
+  end
 
   resources :users, only: [:show] do
     resources :appointments, only: %i[index show]
@@ -42,7 +54,7 @@ Rails.application.routes.draw do
   # resources :shopping_carts
   # resources :products
   # resources :orders
-  resources :users
+  # resources :users
   # resources :payments
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

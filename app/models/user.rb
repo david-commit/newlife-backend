@@ -32,4 +32,5 @@ class User < ApplicationRecord
             uniqueness: {
               message: "A user with that email already exists"
             }
+
 end
