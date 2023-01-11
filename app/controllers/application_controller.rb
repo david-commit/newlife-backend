@@ -1,17 +1,13 @@
 class ApplicationController < ActionController::API
   before_action :authorized
 
-  # def jwt_key
-  #   Rails.application.credentials.jwt_key
-  # end
-
-  def issue_token(user, user_type="user")
+  def issue_token(user, user_type="user")   
     if(user_type == "user")
-      JWT.encode({ user_id: user.id }, "My secret key")
+      JWT.encode({ user_id: user.id, logged_in:  TRUE }, "My secret key")
     elsif(user_type == "admin")
-      JWT.encode({ admin_id: user.id }, "My secret key") 
+      JWT.encode({ admin_id: user.id, logged_in: TRUE }, "My secret key") 
     elsif(user_type == "practitioner")  
-      JWT.encode({ practitioner_id: user.id }, "My secret key")  
+      JWT.encode({ practitioner_id: user.id, logged_in: TRUE }, "My secret key")  
     end
   end
 
@@ -32,17 +28,23 @@ class ApplicationController < ActionController::API
   end
 
   def current_user
-    if(!decoded_token.first["admin_id"].nil?)
-      return Admin.find_by(id: decoded_token.first["admin_id"])
-    elsif(!decoded_token.first["user_id"].nil?)
-      return User.find_by(id: decoded_token.first["user_id"])
-    else
-      return Practitioner.find_by(id: decoded_token.first["practitioner_id"])
+    if(decoded_token.first["logged_in"] == TRUE)
+      if(!decoded_token.first["admin_id"].nil?)
+        return Admin.find_by(id: decoded_token.first["admin_id"])
+      elsif(!decoded_token.first["user_id"].nil?)
+        return User.find_by(id: decoded_token.first["user_id"])
+      else
+        return Practitioner.find_by(id: decoded_token.first["practitioner_id"])
+      end
     end
   end
 
   def logged_in?
     !!current_user
+  end
+
+  def logout
+    decoded_token.first["logged_in"] = FALSE
   end
 
   def authorized
