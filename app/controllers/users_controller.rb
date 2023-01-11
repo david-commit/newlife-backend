@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   skip_before_action :authorized, only: %i[create index]
+  before_create :send_email
 
   def index
     render json: User.all
