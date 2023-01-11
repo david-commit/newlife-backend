@@ -88,6 +88,8 @@ GEM
     erubi (1.12.0)
     faker (3.1.0)
       i18n (>= 1.8.11, < 2)
+    figaro (1.2.0)
+      thor (>= 0.14.0, < 2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -206,6 +208,7 @@ DEPENDENCIES
   byebug (~> 11.1)
   debug
   faker
+  figaro (~> 1.2)
   jwt (~> 2.6)
   pg (~> 1.1)
   puma (~> 5.0)
