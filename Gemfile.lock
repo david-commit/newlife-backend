@@ -183,6 +183,9 @@ GEM
       language_server-protocol (~> 3.17.0)
       sorbet-runtime
       syntax_tree (>= 4.0.2, < 5.0.0)
+    ruby_http_client (3.5.5)
+    sendgrid-ruby (6.6.2)
+      ruby_http_client (~> 3.4)
     sorbet-runtime (0.5.10611)
     syntax_tree (4.3.0)
       prettier_print (>= 1.0.2)
@@ -212,6 +215,7 @@ DEPENDENCIES
   rails (~> 7.0.4)
   rspec-rails (~> 6.0.1)
   ruby-lsp (~> 0.3.7)
+  sendgrid-ruby
   tzinfo-data
 
 RUBY VERSION

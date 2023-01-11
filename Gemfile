@@ -52,3 +52,4 @@ end
 
 gem "jwt", "~> 2.6"
 gem "byebug", "~> 11.1"
+gem "sendgrid-ruby"
