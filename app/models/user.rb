@@ -28,13 +28,7 @@ class User < ApplicationRecord
               message:
                 "must include at least one lowercase letter, one uppercase letter, one digit and have minimum 8 characters"
             }
-  validates :email,
-            presence: {
-              message: "Please add an Email"
-            },
-            uniqueness: {
-              message: "A user with that email already exists"
-            }
+  validates :email, presence: { message: "Please add an Email" }
   # private
 
   # def send_email
