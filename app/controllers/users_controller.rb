@@ -41,6 +41,28 @@ class UsersController < ApplicationController
 
   private
 
+  def send_email
+    require "sendgrid-ruby"
+    include SendGrid
+
+    from = Email.new(email: "test@gmail.com")
+    to = Email.new(email: "test@gmail.com")
+
+    subject = "Welcome to Newlife Hospital"
+    content =
+      Content.new(
+        type: "text/plain",
+        value: "We are pleased to informyou that the force has chosen you"
+      )
+
+    mail = Mail.new(from, subject, to, content)
+    sg =
+      Sendgrid::API.new(
+        api_key:
+          "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"
+      )
+  end
+
   def user_params
     params.permit(:password_confirmation, :password, :email, :username)
   end
