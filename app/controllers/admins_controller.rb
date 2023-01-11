@@ -10,7 +10,9 @@ class AdminsController < ApplicationController
     end
 
     def show
-        render json: Admin.find(params[:id]), status: :ok
+        admin = Admin.find(params[:id])
+        token = issue_token(admin, "admin")
+        render json: {admin: admin, jwt: token}, status: :ok
     end
 
     def update

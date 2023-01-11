@@ -15,11 +15,8 @@ class UsersController < ApplicationController
 
   def show
     user = User.find(params[:id])
-    if user
-      render json: user
-    else
-      render json: { error: "User could not be found" }
-    end
+    token = issue_token(user, "user")
+    render json: {user: user, jwt: token}, status: :ok
   end
 
   def destroy

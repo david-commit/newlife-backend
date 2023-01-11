@@ -10,7 +10,14 @@ class PractitionersController < ApplicationController
     end
 
     def show
-        render json: Practitioner.find(params[:id])
+        practitioner = Practitioner.find(params[:id])
+        token = issue_token(practitioner, "practitioner")
+        render json: {practitioner: practitioner, jwt: token}, status: :ok
+    end
+
+    def destroy
+        make_login_status_false
+        head :no_content
     end
 
     private

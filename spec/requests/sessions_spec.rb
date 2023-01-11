@@ -7,12 +7,22 @@ RSpec.describe "Sessions", type: :request do
 
       token = JSON.parse(response.body)["jwt"]
       
-      post '/login', params: {"username": "what", "password": "Passw0rd3", "email": "what@what.com"}, headers: {"Accept": "application/json", "Authorization": token}
+      post '/login', params: {"username": "what", "password": "Passw0rd3", "email": "what@what.com"}
 
       expect(response).to have_http_status(201)
     end
 
     it "allows one to logout" do
+      User.destroy_all
+      headers = {"ContentType": "application/json"}
+      post '/signup', params: {"username": "what", "password": "Passw0rd3", "email": "what@what.com"}
 
+      post '/login', params: {"username": "what", "password": "Passw0rd3", "email": "what@what.com"}
+
+      token = JSON.parse(response.body)["jwt"]
+
+      delete "/logout", headers: {"Accept": "application/json", "Authorization": token}
+
+      expect(JSON.parse(response.body)).to eql(1)
     end
 end

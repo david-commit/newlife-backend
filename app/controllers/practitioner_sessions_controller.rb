@@ -1,4 +1,6 @@
 class PractitionerSessionsController < ApplicationController
+    skip_before_action :authorized, only: %i[create]
+    
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
     def create

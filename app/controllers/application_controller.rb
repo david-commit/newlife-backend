@@ -43,7 +43,7 @@ class ApplicationController < ActionController::API
     !!current_user
   end
 
-  def logout
+  def make_login_status_false
     decoded_token.first["logged_in"] = FALSE
   end
 
