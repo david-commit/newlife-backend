@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-  skip_before_action :authorized, only: %i[create index]
+  skip_before_action :authorized, only: %i[create index send_email]
 
   def index
     render json: User.all
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.valid?
       token = issue_token(user)
-      MyMailer.send_email(user.email, "Hello", "Pokea").deliver_now
+      # MyMailer.send_email(user.email, "Hello", "Pokea").deliver_now
       render json: {
                user: UserSerializer.new(user),
                jwt: token
@@ -23,6 +23,16 @@ class UsersController < ApplicationController
              },
              status: :unprocessable_entity
     end
+  end
+
+  def send_email
+    user = User.find(params[:id])
+    MyMailer.send_email(
+      user.email,
+      "Hello",
+      "This is the email body"
+    ).deliver_now
+    render json: { message: "Email sent!" }, status: :ok
   end
 
   def show
