@@ -8,7 +8,12 @@ class AdminSessionsController < ApplicationController
         admin = Admin.find_by!(username: params[:username])
         admin = admin.authenticate(params[:password])
         token = issue_token(admin, "admin")
-        render json: {admin: admin, jwt: token}, status: :created
+
+        admin_info = JSON.parse(
+            admin.to_json only: [:id, :username, :email]
+        )
+
+        render json: {admin: admin_info, jwt: token }, status: :created
     end
 
     private

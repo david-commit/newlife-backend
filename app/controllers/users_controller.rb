@@ -11,13 +11,25 @@ class UsersController < ApplicationController
   def create
     user = User.create!(user_params)
     token = issue_token(user)
-    render json: {user: user, jwt: token}, status: :created
+
+    user_info = JSON.parse(
+        user.to_json only: [:id, :username, :email],
+        include: [:orders, :appointments, :patient_profiles]
+    )
+
+    render json: {user: user_info, jwt: token }, status: :created
   end
 
   def show
     user = User.find(params[:id])
     token = issue_token(user, "user")
-    render json: {user: user, jwt: token}, status: :ok
+
+    user_info = JSON.parse(
+        user.to_json only: [:id, :username, :email],
+        include: [:orders, :appointments, :patient_profiles]
+    )
+
+    render json: {user: user_info, jwt: token }, status: :created
   end
 
   def destroy

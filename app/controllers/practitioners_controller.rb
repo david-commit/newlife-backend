@@ -6,13 +6,25 @@ class PractitionersController < ApplicationController
     def create
         practitioner = Practitioner.create!(practitioner_params)
         token = issue_token(practitioner, "practitioner")
-        render json: {practitioner: practitioner, jwt: token }, status: :created
+
+        practitioner_info = JSON.parse(
+            practitioner.to_json only: [:id, :username, :email],
+            include: [:appointments, :practitioner_profiles]
+        )
+
+        render json: {practitioner: practitioner_info, jwt: token }, status: :created
     end
 
     def show
         practitioner = Practitioner.find(params[:id])
         token = issue_token(practitioner, "practitioner")
-        render json: {practitioner: practitioner, jwt: token}, status: :ok
+
+        practitioner_info = JSON.parse(
+            practitioner.to_json only: [:id, :username, :email],
+            include: [:appointments, :practitioner_profiles]
+        )
+
+        render json: {practitioner: practitioner_info, jwt: token }, status: :created
     end
 
     def destroy
