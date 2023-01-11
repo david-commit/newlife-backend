@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  # before_create :send_email
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   skip_before_action :authorized, only: %i[create index]
@@ -12,6 +11,7 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.valid?
       token = issue_token(user)
+      MyMailer.send_email(user.email, "Hello", "Pokea").deliver_now
       render json: {
                user: UserSerializer.new(user),
                jwt: token
@@ -40,9 +40,11 @@ class UsersController < ApplicationController
     head :no_content
   end
 
+  def send_email
+    @user = User
+  end
+
   private
-
-
 
   def user_params
     params.permit(:password_confirmation, :password, :email, :username)
