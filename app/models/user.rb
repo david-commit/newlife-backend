@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  require "sendgrid-ruby"
+  include SendGrid
   before_create :send_email
   has_secure_password
 
@@ -37,9 +39,6 @@ class User < ApplicationRecord
   private
 
   def send_email
-    require "sendgrid-ruby"
-    include SendGrid
-
     from = Email.new(email: "enock.mokua@student.moringaschool.com")
     to = Email.new(email: User.email)
 
