@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   # before_create :send_email
-  before_create :send_email
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   skip_before_action :authorized, only: %i[create index]

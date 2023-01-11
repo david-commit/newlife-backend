@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  before_create :send_email
   has_secure_password
 
   has_many :appointments, dependent: :destroy
