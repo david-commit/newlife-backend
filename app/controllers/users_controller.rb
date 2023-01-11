@@ -56,11 +56,9 @@ class UsersController < ApplicationController
       )
 
     mail = Mail.new(from, subject, to, content)
-    sg =
-      Sendgrid::API.new(
-        api_key:
-          "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"
-      )
+    sg = SendGrid::API.new(api_key: ENV["SENDGRID_API_KEY"])
+
+    response = sg.client.mail._("send").post(request_body: mail.to_json)
   end
 
   def user_params
