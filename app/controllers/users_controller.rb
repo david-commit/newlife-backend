@@ -46,8 +46,8 @@ class UsersController < ApplicationController
     require "sendgrid-ruby"
     include SendGrid
 
-    from = Email.new(email: "test@gmail.com")
-    to = Email.new(email: "test@gmail.com")
+    from = Email.new(email: "enock.mokua@student.moringaschool.com")
+    to = Email.new(email: User.email)
 
     subject = "Welcome to Newlife Hospital"
     content =
