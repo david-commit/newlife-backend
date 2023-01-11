@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   # resources :shopping_carts
   # resources :products
   # resources :orders
-  # resources :users
+  resources :users
   # resources :payments
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

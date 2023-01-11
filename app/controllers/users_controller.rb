@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
+  # before_create :send_email
+  before_create :send_email
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   skip_before_action :authorized, only: %i[create index]
-  before_create :send_email
 
   def index
     render json: User.all
@@ -42,29 +43,7 @@ class UsersController < ApplicationController
 
   private
 
-  def send_email
-    require "sendgrid-ruby"
-    include SendGrid
 
-    from = Email.new(email: "enock.mokua@student.moringaschool.com")
-    to = Email.new(email: User.email)
-
-    subject = "Welcome to Newlife Hospital"
-    content =
-      Content.new(
-        type: "text/plain",
-        value: "We are pleased to informyou that the force has chosen you"
-      )
-
-    mail = Mail.new(from, subject, to, content)
-    sg = SendGrid::API.new(api_key: ENV["SENDGRID_API_KEY"])
-
-    response = sg.client.mail._("send").post(request_body: mail.to_json)
-
-    # puts response.status_code
-    # puts response.body
-    # puts response.headers
-  end
 
   def user_params
     params.permit(:password_confirmation, :password, :email, :username)
