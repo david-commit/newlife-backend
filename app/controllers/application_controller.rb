@@ -3,11 +3,11 @@ class ApplicationController < ActionController::API
 
   def issue_token(user, user_type="user")   
     if(user_type == "user")
-      JWT.encode({ user_id: user.id, logged_in:  TRUE }, "My secret key")
+      JWT.encode({ user_id: user.id}, ENV["jwt_secret_key"])
     elsif(user_type == "admin")
-      JWT.encode({ admin_id: user.id, logged_in: TRUE }, "My secret key") 
+      JWT.encode({ admin_id: user.id}, ENV["jwt_secret_key"]) 
     elsif(user_type == "practitioner")  
-      JWT.encode({ practitioner_id: user.id, logged_in: TRUE }, "My secret key")  
+      JWT.encode({ practitioner_id: user.id}, ENV["jwt_secret_key"])  
     end
   end
 
@@ -17,34 +17,24 @@ class ApplicationController < ActionController::API
 
   def decoded_token
     begin
-      JWT.decode(token, "My secret key")
+      JWT.decode(token, ENV["jwt_secret_key"])
     rescue => exception
       [{ error: "Invalid Token" }]
     end
   end
 
-  def person_id
-    decoded_token.first["user_id"]
-  end
-
   def current_user
-    if(decoded_token.first["logged_in"] == TRUE)
-      if(!decoded_token.first["admin_id"].nil?)
-        return Admin.find_by(id: decoded_token.first["admin_id"])
-      elsif(!decoded_token.first["user_id"].nil?)
-        return User.find_by(id: decoded_token.first["user_id"])
-      else
-        return Practitioner.find_by(id: decoded_token.first["practitioner_id"])
-      end
+    if(!decoded_token.first["admin_id"].nil?)
+      return Admin.find_by(id: decoded_token.first["admin_id"])
+    elsif(!decoded_token.first["user_id"].nil?)
+      return User.find_by(id: decoded_token.first["user_id"])
+    else
+      return Practitioner.find_by(id: decoded_token.first["practitioner_id"])
     end
   end
 
   def logged_in?
     !!current_user
-  end
-
-  def make_login_status_false
-    decoded_token.first["logged_in"] = FALSE
   end
 
   def authorized
