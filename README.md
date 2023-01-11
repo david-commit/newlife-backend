@@ -22,3 +22,4 @@ Doing:
 11. An admin can CRUD a practitioner
 12. A user can post, show & delete their cart data to the DB
 
+deployed link https://newlife-production.up.railway.app/
