@@ -6,7 +6,7 @@ RSpec.describe ShoppingCart, type: :model do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -44,7 +44,7 @@ RSpec.describe ShoppingCart, type: :model do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 

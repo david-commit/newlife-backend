@@ -6,7 +6,7 @@ RSpec.describe Message, type: :model do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -16,7 +16,7 @@ RSpec.describe Message, type: :model do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )
@@ -48,7 +48,7 @@ RSpec.describe Message, type: :model do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -58,7 +58,7 @@ RSpec.describe Message, type: :model do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )
@@ -86,7 +86,7 @@ RSpec.describe Message, type: :model do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -96,7 +96,7 @@ RSpec.describe Message, type: :model do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )

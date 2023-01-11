@@ -5,7 +5,7 @@ RSpec.describe Review, type: :model do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -32,7 +32,7 @@ RSpec.describe Review, type: :model do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -65,7 +65,7 @@ it "throws error when created using rating greater than 5" do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -90,7 +90,7 @@ it "throws error when created using rating less than 1" do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -115,7 +115,7 @@ it "throws error when created using rating less than 1" do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 

@@ -5,7 +5,7 @@ RSpec.describe Admin, type: :model do
     Admin.destroy_all
     admin = Admin.create!(
       username: "admin",
-      password: "admin",
+      password: "Passw0rd3",
       email: "admin@newlife.com"
     )
 
@@ -16,7 +16,7 @@ RSpec.describe Admin, type: :model do
     Admin.destroy_all
     admin = Admin.create!(
       username: "admin",
-      password: "admin",
+      password: "Passw0rd3",
       email: "admin@newlife.com"
     )
 
@@ -29,7 +29,7 @@ RSpec.describe Admin, type: :model do
     Admin.destroy_all
     admin = Admin.create!(
       username: "admin",
-      password: "admin",
+      password: "Passw0rd3",
       email: "admin@newlife.com"
     )
 

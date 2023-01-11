@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
 
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -31,14 +31,14 @@ RSpec.describe User, type: :model do
 
     user1 = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
     expect{
       User.create!(
         username: "vincent",
-        password: "vincent",
+        password: "Passw0rd3",
         email: "vince@vince.com"
       )
     }.to raise_error ActiveRecord::RecordInvalid   
@@ -49,14 +49,14 @@ RSpec.describe User, type: :model do
 
     user1 = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
     expect{
       User.create!(
         username: "vince",
-        password: "vincent",
+        password: "Passw0rd3",
         email: "vincent@vincent.com"
       )
     }.to raise_error ActiveRecord::RecordInvalid   
@@ -67,7 +67,7 @@ RSpec.describe User, type: :model do
 
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -78,7 +78,7 @@ RSpec.describe User, type: :model do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
