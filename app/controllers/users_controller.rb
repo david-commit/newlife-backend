@@ -26,9 +26,9 @@ class UsersController < ApplicationController
   end
 
   def send_email
-    user = User.find(params[:id])
+    @user = User.find(params[:id])
     MyMailer.send_email(
-      user.email,
+      @user.email,
       "Hello",
       "This is the email body"
     ).deliver_now
