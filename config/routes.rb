@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :mpesas
   resources :responses
   post "/signup", to: "users#create"
   post "/login", to: "authentication#create"
