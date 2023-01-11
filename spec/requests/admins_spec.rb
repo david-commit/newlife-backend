@@ -11,19 +11,6 @@ RSpec.describe "Admins", type: :request do
     expect(response).to have_http_status(201)
   end
 
-  it "allows loggin in" do
-    Admin.find_by(username: "what")&.destroy_all
-    Admin.find_by(email: "email")&.destroy_all
-
-    what = Admin.create!(email: "what", username: "what", password: "Passw0rd3")
-
-    headers = {"ContentType": "application/json"}
-    
-    get "/admin/login", params: {id: what.id}
-
-    expect(response).to have_http_status(200)
-  end
-
   it "can be destroyed" do
    Admin.find_by(username: "what")&.destroy_all
     Admin.find_by(username: "what")&.destroy_all

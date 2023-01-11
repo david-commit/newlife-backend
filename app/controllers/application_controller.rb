@@ -1,17 +1,13 @@
 class ApplicationController < ActionController::API
   before_action :authorized
 
-  # def jwt_key
-  #   Rails.application.credentials.jwt_key
-  # end
-
-  def issue_token(user, user_type="user")
+  def issue_token(user, user_type="user")   
     if(user_type == "user")
-      JWT.encode({ user_id: user.id }, "My secret key")
+      JWT.encode({ user_id: user.id}, ENV["jwt_secret_key"])
     elsif(user_type == "admin")
-      JWT.encode({ admin_id: user.id }, "My secret key") 
+      JWT.encode({ admin_id: user.id}, ENV["jwt_secret_key"]) 
     elsif(user_type == "practitioner")  
-      JWT.encode({ practitioner_id: user.id }, "My secret key")  
+      JWT.encode({ practitioner_id: user.id}, ENV["jwt_secret_key"])  
     end
   end
 
@@ -21,14 +17,10 @@ class ApplicationController < ActionController::API
 
   def decoded_token
     begin
-      JWT.decode(token, "My secret key")
+      JWT.decode(token, ENV["jwt_secret_key"])
     rescue => exception
       [{ error: "Invalid Token" }]
     end
-  end
-
-  def person_id
-    decoded_token.first["user_id"]
   end
 
   def current_user

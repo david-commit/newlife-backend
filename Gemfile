@@ -52,3 +52,6 @@ end
 
 gem "jwt", "~> 2.6"
 gem "byebug", "~> 11.1"
+gem "securerandom", "~> 0.2.2"
+
+gem "figaro", "~> 1.2"
