@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  require "sendgrid-ruby"
-  include SendGrid
-  before_create :send_email
+  # require "sendgrid-ruby"
+  # include SendGrid
+  # before_create :send_email
   has_secure_password
 
   has_many :appointments, dependent: :destroy
@@ -35,27 +35,26 @@ class User < ApplicationRecord
             uniqueness: {
               message: "A user with that email already exists"
             }
+  # private
 
-  private
+  # def send_email
+  #   from = Email.new(email: "enock.mokua@student.moringaschool.com")
+  #   to = Email.new(email: user.email)
 
-  def send_email
-    from = Email.new(email: "enock.mokua@student.moringaschool.com")
-    to = Email.new(email: User.email)
+  #   subject = "Welcome to Newlife Hospital"
+  #   content =
+  #     Content.new(
+  #       type: "text/plain",
+  #       value: "We are pleased to informyou that the force has chosen you"
+  #     )
 
-    subject = "Welcome to Newlife Hospital"
-    content =
-      Content.new(
-        type: "text/plain",
-        value: "We are pleased to informyou that the force has chosen you"
-      )
+  #   mail = Mail.new(from, subject, to, content)
+  #   sg = SendGrid::API.new(api_key: ENV["SENDGRID_API_KEY"])
 
-    mail = Mail.new(from, subject, to, content)
-    sg = SendGrid::API.new(api_key: ENV["SENDGRID_API_KEY"])
+  #   response = sg.client.mail._("send").post(request_body: mail.to_json)
 
-    response = sg.client.mail._("send").post(request_body: mail.to_json)
-
-    # puts response.status_code
-    # puts response.body
-    # puts response.headers
-  end
+  #   # puts response.status_code
+  #   # puts response.body
+  #   # puts response.headers
+  # end
 end
