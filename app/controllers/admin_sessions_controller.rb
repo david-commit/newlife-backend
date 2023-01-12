@@ -16,6 +16,10 @@ class AdminSessionsController < ApplicationController
         render json: {admin: admin_info, jwt: token }, status: :created
     end
 
+    def destroy
+        head :no_content
+    end
+
     private
     def couldnt_log_you_in
         render json: {error: "Couldn't log you in. Check to confirm if your passowrd is correct"}, status: :unprocessable_entity

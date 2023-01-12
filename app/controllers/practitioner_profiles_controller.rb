@@ -5,7 +5,7 @@ class PractitionerProfilesController < ApplicationController
     # before_action :authorize
 
     def create
-        render json: PractitionerProfile.create!(patient_profile_params), status: :created
+        render json: PractitionerProfile.create!(practitioner_profile_params), status: :created
     end
 
     def show
@@ -18,7 +18,7 @@ class PractitionerProfilesController < ApplicationController
 
     def update
         practitioner_profile = PractitionerProfile.find(params[:id])
-        practitioner_profile.update(patient_profile_params)
+        practitioner_profile.update(practitioner_profile_params)
         render json: practitioner_profile, status: :ok
     end
 
@@ -32,8 +32,8 @@ class PractitionerProfilesController < ApplicationController
         Practitioner.find(session[:practitioner_id])
     end
 
-    def patient_profile_params
-        params.permit(:practitioner_id, :first_name, :last_name, :bio, :dob, :location, :blood_group, :height, :weight, :phone_number, :bmi)
+    def practitioner_profile_params
+        params.permit(:practitioner_id, :first_name, :last_name, :bio, :dob, :location, :blood_group, :height, :weight, :phone_number, :bmi, :job_title)
     end
 
     def record_invalid(invalid)
