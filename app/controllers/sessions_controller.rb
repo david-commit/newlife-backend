@@ -17,7 +17,6 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        make_login_status_false
         head :no_content
     end
 
