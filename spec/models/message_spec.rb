@@ -24,7 +24,8 @@ RSpec.describe Message, type: :model do
     Appointment.destroy_all
     appointment = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     )
 
     Message.destroy_all
@@ -66,7 +67,8 @@ RSpec.describe Message, type: :model do
     Appointment.destroy_all
     appointment = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     )
 
     Message.destroy_all
@@ -104,7 +106,8 @@ RSpec.describe Message, type: :model do
     Appointment.destroy_all
     appointment = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     )
 
     Message.destroy_all
