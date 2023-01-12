@@ -121,6 +121,17 @@ diabetes_1_drugs.length.times do |i|
     )
 end
 
+zero_price_drugs = %w(Masks WheelChair)
+zero_price_drugs.length.times do |i|
+    products << Product.create!(
+        name: zero_price_drugs[i],
+        category: "Free",
+        price: 0,
+        image: "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
+        stock: rand(0..100)
+    )
+end
+
 
 puts "5. seeding shopping_cart..."
 5.times do
