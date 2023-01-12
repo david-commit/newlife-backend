@@ -40,7 +40,78 @@ Doing:
    Response:
 
 ```json
+[]
+```
 
+2. LOGIN - Creates a session that enables auto-login for an already pre-existing user
+
+   POST: `/login`
+
+   Post data:
+
+```json
+[
+  {
+    "username": "vincent",
+    "email": "vincent@patient.com",
+    "password": "Vincent111"
+  }
+]
+```
+
+   Response:
+
+```json
+[
+  {
+    "user": {
+      "id": 1,
+      "username": "vincent",
+      "email": "vincent@patient.com",
+      "orders": [
+        {
+          "id": 1,
+          "user_id": 1,
+          "created_at": "2023-01-12T07:21:34.017Z",
+          "updated_at": "2023-01-12T07:21:34.017Z",
+          "delivered": false
+        }
+      ],
+      "appointments": [
+        {
+          "id": 1,
+          "user_id": 1,
+          "practitioner_id": 1,
+          "date": "2022-12-20",
+          "approved": true,
+          "appointment_type": "Normal",
+          "created_at": "2023-01-12T07:21:37.532Z",
+          "updated_at": "2023-01-12T07:21:37.532Z"
+        }
+      ],
+      "patient_profiles": [
+        {
+          "id": 1,
+          "user_id": 1,
+          "first_name": "Vincent",
+          "last_name": "Makokha",
+          "bio": "Libero ea autem. Eum laudantium voluptas. Rerum nihil et. Labore ipsum quos.",
+          "dob": "2022-12-20",
+          "location": "Nairobi",
+          "blood_group": "0-",
+          "height": 1.8,
+          "weight": 64.35,
+          "phone_number": "0701807557",
+          "bmi": 30.81,
+          "created_at": "2023-01-12T07:21:37.493Z",
+          "updated_at": "2023-01-12T07:21:37.493Z",
+          "image": null
+        }
+      ]
+    },
+    "jwt": "eyJhb ... HM5aDI"
+  }
+]
 ```
 
 <hr />
@@ -173,9 +244,7 @@ Response:
    Response:
 
    ```json
-   [
-    
-   ]
+   []
    ```
 
 5. LOGOUT - Deletes an active practitioner's session
