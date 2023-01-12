@@ -1,4 +1,6 @@
 class MpesasController < ApplicationController
+  skip_before_action :authorized, only: %i[stkpush]
+
   require "rest-client"
   rescue_from SocketError, with: :OfflineMode
 
