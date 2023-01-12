@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   resources :mpesas
   resources :responses
   post "/signup", to: "users#create"
-  post "/login", to: "authentication#create"
-  get "/authorized", to: "sessions#show"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
   get "/me", to: "users#show"
 
   post "/practitioner/signup", to: "practitioners#create"
@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   delete "/practitioner/logout", to: "practitioner_sessions#destroy"
 
   post "admin/signup", to: "admins#create"
-  get "admin/login", to: "admins#show"
+  post "admin/login", to: "admin_sessions#create"
+  delete "admin/logout", to: "admin_sessions#destroy"
   delete "admin/delete_account", to: "admins#destroy"
 
   resources :products, only: %i[index show]

@@ -8,22 +8,22 @@
 
 puts "Start seeding..."
 puts "0. seeding admin..."
-admin = Admin.create!(
+admin1 = Admin.create!(
     username: "admin",
-    password: "admin",
+    password: "Admin111",
     email: "admin@newlife.com"
 )
 
 puts "1. seeding user..."
 user1 = User.create!(
     username: "vincent",
-    password: "vincent",
+    password: "Vincent111",
     email: "vincent@patient.com"
 )
 
 user2 = User.create!(
     username: "enock",
-    password: "enock",
+    password: "Enock111",
     email: "enock@patient.com"
 )
 
@@ -194,7 +194,8 @@ appointment1 = Appointment.create!(
     practitioner_id: practitioner1.id,
     date: "2022-12-20",
     approved: true,
-    appointment_type: "Normal"
+    appointment_type: "Consultation",
+    appointment_info: "blah blah blah"
 )
 
 appointment2 = Appointment.create!(
@@ -202,7 +203,8 @@ appointment2 = Appointment.create!(
     practitioner_id: practitioner1.id,
     date: "2022-12-20",
     approved: false,
-    appointment_type: "Normal"
+    appointment_type: "Consultation",
+    appointment_info: "blah blah blah"
 )
 
 appointment3 = Appointment.create!(
@@ -210,7 +212,8 @@ appointment3 = Appointment.create!(
     practitioner_id: other_practitioners.sample.id,
     date: "2022-12-20",
     approved: true,
-    appointment_type: "Normal"
+    appointment_type: "Paediatrics",
+    appointment_info: "blah blah blah"
 )
 
 
@@ -240,7 +243,8 @@ david_profile = PractitionerProfile.create!(
     blood_group: "B-",
     weight: (rand()+rand(50..100)).round(2),
     phone_number: "0756291474",
-    bmi: (rand()+rand(15..30)).round(2)
+    bmi: (rand()+rand(15..30)).round(2),
+    job_title: Faker::Job.title
 )
 
 10.times do |i|
@@ -254,7 +258,8 @@ david_profile = PractitionerProfile.create!(
         blood_group: "B-",
         weight: (rand()+rand(50..100)).round(2),
         phone_number: "0756291474",
-        bmi: (rand()+rand(15..30)).round(2)        
+        bmi: (rand()+rand(15..30)).round(2),
+        job_title: Faker::Job.title       
     )    
 end
 

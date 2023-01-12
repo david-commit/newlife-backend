@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   skip_before_action :authorized, only: %i[create index send_email]
-
+  
   def index
     render json: User.all
   end
@@ -23,6 +23,7 @@ class UsersController < ApplicationController
              },
              status: :unprocessable_entity
     end
+
   end
 
   def send_email
@@ -37,11 +38,14 @@ class UsersController < ApplicationController
 
   def show
     user = User.find(params[:id])
-    if user
-      render json: user
-    else
-      render json: { error: "User could not be found" }
-    end
+    token = issue_token(user, "user")
+
+    user_info = JSON.parse(
+        user.to_json only: [:id, :username, :email],
+        include: [:orders, :appointments, :patient_profiles]
+    )
+
+    render json: {user: user_info, jwt: token }, status: :created
   end
 
   def destroy

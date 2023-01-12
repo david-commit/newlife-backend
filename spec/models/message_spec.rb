@@ -6,7 +6,7 @@ RSpec.describe Message, type: :model do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -16,7 +16,7 @@ RSpec.describe Message, type: :model do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )
@@ -24,7 +24,8 @@ RSpec.describe Message, type: :model do
     Appointment.destroy_all
     appointment = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     )
 
     Message.destroy_all
@@ -48,7 +49,7 @@ RSpec.describe Message, type: :model do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -58,7 +59,7 @@ RSpec.describe Message, type: :model do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )
@@ -66,7 +67,8 @@ RSpec.describe Message, type: :model do
     Appointment.destroy_all
     appointment = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     )
 
     Message.destroy_all
@@ -86,7 +88,7 @@ RSpec.describe Message, type: :model do
     User.destroy_all
     user = User.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com"
     )
 
@@ -96,7 +98,7 @@ RSpec.describe Message, type: :model do
     Practitioner.destroy_all
     practitioner = Practitioner.create!(
       username: "vincent",
-      password: "vincent",
+      password: "Passw0rd3",
       email: "vincent@vincent.com",
       department_id: department.id
     )
@@ -104,7 +106,8 @@ RSpec.describe Message, type: :model do
     Appointment.destroy_all
     appointment = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     )
 
     Message.destroy_all

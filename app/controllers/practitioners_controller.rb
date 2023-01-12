@@ -1,16 +1,35 @@
 class PractitionersController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+    skip_before_action :authorized, only: %i[create show]
 
     def create
         practitioner = Practitioner.create!(practitioner_params)
-        # session[:practitioner_id] = practitioner.id
-        render json: practitioner, status: :created
+        token = issue_token(practitioner, "practitioner")
+
+        practitioner_info = JSON.parse(
+            practitioner.to_json only: [:id, :username, :email],
+            include: [:appointments, :practitioner_profiles, :department]
+        )
+
+        render json: {practitioner: practitioner_info, jwt: token }, status: :created
     end
 
     def show
-        # render json: Practitioner.find(session[:practitioner_id]), status: :ok
-        render json: Practitioner.find(params[:id])
+        practitioner = Practitioner.find(params[:id])
+        token = issue_token(practitioner, "practitioner")
+
+        practitioner_info = JSON.parse(
+            practitioner.to_json only: [:id, :username, :email],
+            include: [:appointments, :practitioner_profiles, :department]
+        )
+
+        render json: {practitioner: practitioner_info, jwt: token }, status: :created
+    end
+
+    def destroy
+        make_login_status_false
+        head :no_content
     end
 
     private

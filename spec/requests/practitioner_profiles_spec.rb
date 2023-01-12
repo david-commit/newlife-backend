@@ -6,16 +6,12 @@ RSpec.describe "PractitionerProfiles", type: :request do
     department = Department.create(name: "Department 1")
 
     Practitioner.destroy_all
-    practitioner = Practitioner.create!(
-      username: "vincent",
-      password: "vincent",
-      email: "vincent@vincent.com",
-      department_id: department.id
-    )
+    post '/practitioner/signup', params: {"username": "what", "password": "Passw0rd3", "email": "what@what.com", "department_id": department.id}
 
-    headers = {"Content-Type": "application/json"}
+    token = JSON.parse(response.body)["jwt"]
+    practitioner = Practitioner.find_by(email: "what@what.com")
 
-    post "/practitioner_profiles", params: {"practitioner_id": practitioner.id, "first_name": "vincent", "last_name": "vincent"}
+    post "/practitioner_profiles", params: {"practitioner_id": practitioner.id, "first_name": "vincent", "last_name": "vincent"}, headers: {"Accept": "application/json", "Authorization": token}
 
     expect(response).to have_http_status(201)
   end
@@ -25,12 +21,10 @@ RSpec.describe "PractitionerProfiles", type: :request do
     department = Department.create(name: "Department 1")
 
     Practitioner.destroy_all
-    practitioner = Practitioner.create!(
-      username: "vincent",
-      password: "vincent",
-      email: "vincent@vincent.com",
-      department_id: department.id
-    )
+    post '/practitioner/signup', params: {"username": "what", "password": "Passw0rd3", "email": "what@what.com", "department_id": department.id}
+
+    token = JSON.parse(response.body)["jwt"]
+    practitioner = Practitioner.find_by(email: "what@what.com")
 
     PractitionerProfile.destroy_all
     patient_profile = PractitionerProfile.create!(
@@ -39,7 +33,7 @@ RSpec.describe "PractitionerProfiles", type: :request do
       last_name: "Vincent"
     ) 
     
-    patch "/practitioner_profiles/#{patient_profile.id}", params: {"weight": 1000000}
+    patch "/practitioner_profiles/#{patient_profile.id}", params: {"weight": 1000000}, headers: {"Accept": "application/json", "Authorization": token}
 
     expect(JSON.parse(response.body)["weight"]).to eql(1000000.to_f)
   end
@@ -49,12 +43,10 @@ RSpec.describe "PractitionerProfiles", type: :request do
     department = Department.create(name: "Department 1")
 
     Practitioner.destroy_all
-    practitioner = Practitioner.create!(
-      username: "vincent",
-      password: "vincent",
-      email: "vincent@vincent.com",
-      department_id: department.id
-    )
+    post '/practitioner/signup', params: {"username": "what", "password": "Passw0rd3", "email": "what@what.com", "department_id": department.id}
+
+    token = JSON.parse(response.body)["jwt"]
+    practitioner = Practitioner.find_by(email: "what@what.com")
 
     PractitionerProfile.destroy_all
     patient_profile = PractitionerProfile.create!(
@@ -63,7 +55,7 @@ RSpec.describe "PractitionerProfiles", type: :request do
       last_name: "Vincent"
     ) 
     
-    get "/practitioner_profiles/#{patient_profile.id}"
+    get "/practitioner_profiles/#{patient_profile.id}", headers: {"Accept": "application/json", "Authorization": token}
 
     expect(JSON.parse(response.body)).to be_kind_of(Hash)    
   end
@@ -73,14 +65,12 @@ RSpec.describe "PractitionerProfiles", type: :request do
     department = Department.create(name: "Department 1")
 
     Practitioner.destroy_all
-    practitioner = Practitioner.create!(
-      username: "vincent",
-      password: "vincent",
-      email: "vincent@vincent.com",
-      department_id: department.id
-    )
+    post '/practitioner/signup', params: {"username": "what", "password": "Passw0rd3", "email": "what@what.com", "department_id": department.id}
+
+    token = JSON.parse(response.body)["jwt"]
+    practitioner = Practitioner.find_by(email: "what@what.com")
     
-    get "/practitioner_profiles"
+    get "/practitioner_profiles", headers: {"Accept": "application/json", "Authorization": token}
 
     expect(JSON.parse(response.body)).to be_kind_of(Array)    
   end 
@@ -90,12 +80,10 @@ RSpec.describe "PractitionerProfiles", type: :request do
     department = Department.create(name: "Department 1")
 
     Practitioner.destroy_all
-    practitioner = Practitioner.create!(
-      username: "vincent",
-      password: "vincent",
-      email: "vincent@vincent.com",
-      department_id: department.id
-    )
+    post '/practitioner/signup', params: {"username": "what", "password": "Passw0rd3", "email": "what@what.com", "department_id": department.id}
+
+    token = JSON.parse(response.body)["jwt"]
+    practitioner = Practitioner.find_by(email: "what@what.com")
 
     PractitionerProfile.destroy_all
     patient_profile = PractitionerProfile.create!(
@@ -104,7 +92,7 @@ RSpec.describe "PractitionerProfiles", type: :request do
       last_name: "Vincent"
     ) 
     
-    delete "/practitioner_profiles/#{patient_profile.id}"  
+    delete "/practitioner_profiles/#{patient_profile.id}", headers: {"Accept": "application/json", "Authorization": token}  
     
     expect(response).to have_http_status(:no_content)
   end

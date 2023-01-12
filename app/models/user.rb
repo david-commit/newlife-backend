@@ -28,3 +28,4 @@ class User < ApplicationRecord
   validates :email, presence: { message: "Please add an Email" }
 
 end
+

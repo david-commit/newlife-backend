@@ -5,34 +5,30 @@ RSpec.describe "Payments", type: :request do
     headers  = {"Content-Type": "application/json"}
 
     User.destroy_all
-    user = User.create!(
-      username: "vincent",
-      password: "vincent",
-      email: "vincent@vincent.com"
-    )
+    post '/signup', params: {"username": "what", "password": "Passw0rd3", "email": "what@what.com"}
+
+    token = JSON.parse(response.body)["jwt"]
+    user = User.find_by(email: "what@what.com")
 
     Order.destroy_all
     order = Order.create!(
       user_id: user.id,
       delivered: false
     )
-
-    headers = {"Content-Type": "application/json", "Accept": "application/json"}
     
-    post "/payments", params: {"business_short_code": "whatever", "order_id": order.id}
+    post "/payments", params: {"business_short_code": "whatever", "order_id": order.id}, headers: {
+      "Accept": "application/json", "Authorization": token
+    }
 
     expect(response).to have_http_status(201)
   end
 
   it "can be viewed (single)" do
-    headers  = {"Content-Type": "application/json"}
-
     User.destroy_all
-    user = User.create!(
-      username: "vincent",
-      password: "vincent",
-      email: "vincent@vincent.com"
-    )
+    post '/signup', params: {"username": "what", "password": "Passw0rd3", "email": "what@what.com"}
+
+    token = JSON.parse(response.body)["jwt"]
+    user = User.find_by(email: "what@what.com")
 
     Order.destroy_all
     order = Order.create!(
@@ -46,13 +42,23 @@ RSpec.describe "Payments", type: :request do
       order_id: order.id
     )
     
-    get "/payments/#{payment.id}" 
+    get "/payments/#{payment.id}", headers: {
+      "Accept": "application/json", "Authorization": token
+    }
     
     expect(JSON.parse(response.body)).to be_kind_of(Hash)
   end
 
   it "can be viewed (all payments)" do
-    get "/payments"
+    User.destroy_all
+    post '/signup', params: {"username": "what", "password": "Passw0rd3", "email": "what@what.com"}
+
+    token = JSON.parse(response.body)["jwt"]
+    user = User.find_by(email: "what@what.com")
+
+    get "/payments", headers: {
+      "Accept": "application/json", "Authorization": token
+    }
     expect(JSON.parse(response.body)).to be_kind_of(Array)
   end
 
@@ -60,11 +66,10 @@ RSpec.describe "Payments", type: :request do
     headers  = {"Content-Type": "application/json"}
 
     User.destroy_all
-    user = User.create!(
-      username: "vincent",
-      password: "vincent",
-      email: "vincent@vincent.com"
-    )
+    post '/signup', params: {"username": "what", "password": "Passw0rd3", "email": "what@what.com"}
+
+    token = JSON.parse(response.body)["jwt"]
+    user = User.find_by(email: "what@what.com")
 
     Order.destroy_all
     order = Order.create!(
@@ -78,7 +83,9 @@ RSpec.describe "Payments", type: :request do
       order_id: order.id
     )
     
-    delete "/payments/#{payment.id}"
+    delete "/payments/#{payment.id}", headers: {
+      "Accept": "application/json", "Authorization": token
+    }
 
     expect(response).to have_http_status(:no_content)
   end

@@ -1,13 +1,28 @@
 class AdminsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+    skip_before_action :authorized, only: %i[create show]
 
     def create
-        render json: Admin.create!(admin_params), status: :created
+        admin = Admin.create!(admin_params)
+        token = issue_token(admin, "admin")
+
+        admin_info = JSON.parse(
+            admin.to_json only: [:id, :username, :email]
+        )
+
+        render json: {admin: admin_info, jwt: token }, status: :created
     end
 
     def show
-        render json: Admin.find(params[:id]), status: :ok
+        admin = Admin.find(params[:id])
+        token = issue_token(admin, "admin")
+
+        admin_info = JSON.parse(
+            admin.to_json only: [:id, :username, :email]
+        )
+
+        render json: {admin: admin_info, jwt: token }, status: :created
     end
 
     def update

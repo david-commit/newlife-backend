@@ -36,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_11_235755) do
     t.string "appointment_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "appointment_info"
     t.index ["practitioner_id"], name: "index_appointments_on_practitioner_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
@@ -137,6 +138,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_11_235755) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.string "job_title"
     t.index ["practitioner_id"], name: "index_practitioner_profiles_on_practitioner_id"
   end
 
