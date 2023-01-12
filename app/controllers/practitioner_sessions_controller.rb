@@ -10,7 +10,7 @@ class PractitionerSessionsController < ApplicationController
         
         practitioner_info = JSON.parse(
             practitioner.to_json only: [:id, :username, :email],
-            include: [:appointments, :practitioner_profiles]
+            include: [:appointments, :practitioner_profiles, :department]
         )
 
         render json: {practitioner: practitioner_info, jwt: token }, status: :created
