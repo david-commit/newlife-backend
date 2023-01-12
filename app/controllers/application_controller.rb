@@ -3,11 +3,11 @@ class ApplicationController < ActionController::API
 
   def issue_token(user, user_type="user")   
     if(user_type == "user")
-      JWT.encode({ user_id: user.id}, ENV["jwt_secret_key"])
+      JWT.encode({ user_id: user.id}, "My Sectet Key")
     elsif(user_type == "admin")
-      JWT.encode({ admin_id: user.id}, ENV["jwt_secret_key"]) 
+      JWT.encode({ admin_id: user.id}, "My Sectet Key") 
     elsif(user_type == "practitioner")  
-      JWT.encode({ practitioner_id: user.id}, ENV["jwt_secret_key"])  
+      JWT.encode({ practitioner_id: user.id}, "My Sectet Key")  
     end
   end
 
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::API
 
   def decoded_token
     begin
-      JWT.decode(token, ENV["jwt_secret_key"])
+      JWT.decode(token, "My Sectet Key")
     rescue => exception
       [{ error: "Invalid Token" }]
     end
