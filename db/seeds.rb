@@ -240,7 +240,8 @@ david_profile = PractitionerProfile.create!(
     blood_group: "B-",
     weight: (rand()+rand(50..100)).round(2),
     phone_number: "0756291474",
-    bmi: (rand()+rand(15..30)).round(2)
+    bmi: (rand()+rand(15..30)).round(2),
+    job_title: Faker::Job.title
 )
 
 10.times do |i|
@@ -254,7 +255,8 @@ david_profile = PractitionerProfile.create!(
         blood_group: "B-",
         weight: (rand()+rand(50..100)).round(2),
         phone_number: "0756291474",
-        bmi: (rand()+rand(15..30)).round(2)        
+        bmi: (rand()+rand(15..30)).round(2),
+        job_title: Faker::Job.title       
     )    
 end
 
