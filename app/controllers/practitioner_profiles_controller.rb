@@ -28,12 +28,8 @@ class PractitionerProfilesController < ApplicationController
     end
     
     private
-    def authorize
-        Practitioner.find(session[:practitioner_id])
-    end
-
     def practitioner_profile_params
-        params.permit(:practitioner_id, :first_name, :last_name, :bio, :dob, :location, :blood_group, :height, :weight, :phone_number, :bmi, :job_title)
+        params.permit(:practitioner_id, :first_name, :last_name, :bio, :dob, :location, :blood_group, :height, :weight, :phone_number, :bmi, :job_title, :email)
     end
 
     def record_invalid(invalid)
