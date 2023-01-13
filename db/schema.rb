@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_093242) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "appointment_info"
+    t.string "time"
     t.index ["practitioner_id"], name: "index_appointments_on_practitioner_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
