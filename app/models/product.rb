@@ -2,7 +2,7 @@ class Product < ApplicationRecord
   include PgSearch::Model
 
   pg_search_scope :search_by_name,
-                  against: %i[first_name last_name],
+                  against: %i[name category],
                   using: {
                     tsearch: {
                       prefix: true
