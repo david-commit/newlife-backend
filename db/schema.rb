@@ -10,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_13_093242) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_13_194143) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_trgm"
   enable_extension "plpgsql"
 
   create_table "access_tokens", force: :cascade do |t|
@@ -125,6 +126,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_093242) do
     t.index ["order_id"], name: "index_payments_on_order_id"
   end
 
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index %w[searchable_type searchable_id],
+            name: "index_pg_search_documents_on_searchable"
+  end
+
   create_table "practitioner_profiles", force: :cascade do |t|
     t.bigint "practitioner_id", null: false
     t.string "first_name"
@@ -140,7 +151,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_093242) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.string "job_title"
-    t.index ["practitioner_id"], name: "index_practitioner_profiles_on_practitioner_id"
+    t.index ["practitioner_id"],
+            name: "index_practitioner_profiles_on_practitioner_id"
   end
 
   create_table "practitioners", force: :cascade do |t|
