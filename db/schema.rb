@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_01_13_194143) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_trgm"
   enable_extension "plpgsql"
 
   create_table "access_tokens", force: :cascade do |t|
