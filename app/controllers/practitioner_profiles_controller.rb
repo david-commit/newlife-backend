@@ -1,6 +1,8 @@
 class PractitionerProfilesController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  skip_before_action :authorized, only: %i[search]
+
 
   # before_action :authorize
 
@@ -29,7 +31,7 @@ class PractitionerProfilesController < ApplicationController
   end
 
   def search
-    profile = Profile.search_by_name(params[:query])
+    profile = PractitionerProfile.search_by_name(params[:query])
     render json: profile
   end
 
