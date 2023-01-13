@@ -11,29 +11,32 @@ Lack of proper planning can lead to dire consequences to both the medical instit
 
 ## MVP
 
-Doing:
+Done:
 
 1. A user is able to sign up as a patient
 2. A user is able to log in as a patient
 3. A patient is able to book an appointment with a practitioner of their choice
-4. A patient is able to update & delete(descendant destroy) his/her account
+4. A patient is able to delete(descendant destroy) his/her account
+5. A user is able to view all and single shop products
+6. A user can post, show & delete their cart data to the DB
+
+Doing:
+
 5. A practitioner is able to log in to an existing account (created by Admin)
 6. A practitioner can has access to all client records/details
 7. A practitioner can CRUD an appointment with a patient
-8. A user is able to view all and single shop products
-9. A user can log in as an admin
-10. An admin can CRUD a shop product
-11. An admin can CRUD a practitioner
-12. A user can post, show & delete their cart data to the DB
-13. An Admin can see the hospital's dashboard
-14. An Admin can see a list of all patients
-15. An Admin can log in and out
+8. A user can log in as an admin
+9. An admin can CRUD a shop product
+10. An admin can CRUD a practitioner
+11. An Admin can see the hospital's dashboard
+12. An Admin can see a list of all patients
+13. An Admin can log in and out
 
 # API Documentation
 
 ## Users (Patients)
 
-1. INDEX - List of all users (patients)b, can only be queried by practitioner or admin roles
+1. INDEX - List of all users (patients), can only be queried by practitioner or admin roles
 
    GET: `/users`
 
@@ -59,7 +62,7 @@ Doing:
 ]
 ```
 
-   Response:
+Response:
 
 ```json
 [
@@ -72,7 +75,7 @@ Doing:
         {
           "id": 1,
           "user_id": 1,
-          "created_at": "2023-01-12T07:21:34.017Z",
+          "created_at": "2023-/signup01-12T07:21:34.017Z",
           "updated_at": "2023-01-12T07:21:34.017Z",
           "delivered": false
         }
@@ -110,6 +113,230 @@ Doing:
       ]
     },
     "jwt": "eyJhb ... HM5aDI"
+  }
+]
+```
+
+3. SIGNUP - Creare a new patient account
+
+   POST: `/signup`
+
+   Post data:
+
+```json
+[
+  {
+    "username": "cynthia",
+    "password": "Cynthia111",
+    "password_confirmation": "Cynthia111",
+    "email": "cynthia@patient.com"
+  }
+]
+```
+
+Response:
+
+```json
+[
+  {
+    "user": {
+      "id": 3,
+      "username": "cynthia",
+      "email": "cynthia@patient.com",
+      "orders": [],
+      "appointments": [],
+      "patient_profiles": []
+    },
+    "jwt": "eyJV ... cxRc"
+  }
+]
+```
+
+4. PATEINT DETAILS - Adds user data to an already signed in patient's profile.
+
+   POST: `/patient_profiles`
+
+Post data:
+
+```json
+[
+  {
+    "user_id": "3",
+    "first_name": "Mary",
+    "last_name": "Wangari",
+    "bio": "Lorem qwertyui qwertyu qwert",
+    "dob": "2022-12-20",
+    "location": "Nairobi",
+    "blood_group": "A+",
+    "height": "3",
+    "weight": "56",
+    "phone_number": "1234567890",
+    "bmi": "45"
+  }
+]
+```
+
+Response:
+
+```json
+[
+  {
+    "id": 3,
+    "first_name": "Mary",
+    "last_name": "Wangari",
+    "bio": "Lorem qwertyui qwertyu qwert",
+    "dob": "2022-12-20",
+    "location": "Nairobi",
+    "blood_group": "A+",
+    "height": 3.0,
+    "weight": 56.0,
+    "phone_number": "1234567890",
+    "bmi": 45.0,
+    "user": {
+      "id": 3,
+      "username": "Mary",
+      "email": "mary@patient.com"
+    }
+  }
+]
+```
+
+5. BOOK AN APPOINTMENT - Patient can book an appointment with a practitioner
+
+   POST: `/appointments`
+
+   Post data:
+
+```json
+[
+  {
+    "user_id": "3",
+    "practitioner_id": 1,
+    "date": "2022-12-20",
+    // "approved": true,
+    "appointment_type": "Normal"
+  }
+]
+```
+
+Response:
+
+```json
+[
+  {
+    "id": 4,
+    "date": "2022-12-20",
+    "approved": null,
+    "appointment_type": "Normal",
+    "user": {
+      "id": 3,
+      "username": "cynthia",
+      "email": "cynthia@patient.com"
+    },
+    "practitioner": {
+      "id": 1,
+      "username": "david",
+      "email": "david@david.com"
+    }
+  }
+]
+```
+
+6. UPDATE AN APPOINTMENT - A patient is able to update an existing appointment
+
+   PATCH: `/appointments/:id`
+
+   Post data:
+
+```json
+[
+  {
+    "date": "2023-01-20",
+    "approved": true
+  }
+]
+```
+
+Response:
+
+```json
+[
+  {
+    "id": 4,
+    "date": "2023-01-20",
+    "approved": true,
+    "appointment_type": "Normal",
+    "user": {
+      "id": 3,
+      "username": "cynthia",
+      "email": "cynthia@patient.com"
+    },
+    "practitioner": {
+      "id": 1,
+      "username": "david",
+      "email": "david@david.com"
+    }
+  }
+]
+```
+
+7. DELETE USER - A parient is able to delete his/her account together with all associated records
+
+   DELETE: `/users/:id`
+
+   No response
+
+8. USER'S ORDERS - A patient can see all his/her orders
+
+   GET: `/users/:id/orders`
+
+   Response:
+
+```json
+[
+  {
+    "id": 1,
+    "delivered": false,
+    "user": {
+      "id": 1,
+      "username": "vincent",
+      "email": "vincent@patient.com"
+    },
+    "payment": {
+      "id": 1,
+      "business_short_code": 0,
+      "password": null,
+      "transaction_type": null,
+      "party_A": null,
+      "party_B": null,
+      "phone_number": null,
+      "callback_url": null,
+      "account_reference": null,
+      "transaction_desc": null,
+      "amount": null
+    },
+    "products": [
+      {
+        "id": 16,
+        "name": "Cymbalta",
+        "category": "Depression",
+        "price_in_2dp": 33.86,
+        "description": null,
+        "image": "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
+        "dosage": null,
+        "stock": 9
+      },
+      {
+        "id": 18,
+        "name": "Zoloft",
+        "category": "Depression",
+        "price_in_2dp": 16.52,
+        "description": null,
+        "image": "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
+        "dosage": null,
+        "stock": 73
+      }
+    ]
   }
 ]
 ```
@@ -231,21 +458,21 @@ Response:
 
    Post data:
 
-   ```json
-   [
-     {
-       "username": "mikw",
-       "email": "mike@patient.com",
-       "password": "MikeMike111"
-     }
-   ]
-   ```
+```json
+[
+  {
+    "username": "mikw",
+    "email": "mike@patient.com",
+    "password": "MikeMike111"
+  }
+]
+```
 
-   Response:
+Response:
 
-   ```json
-   []
-   ```
+```json
+[]
+```
 
 5. LOGOUT - Deletes an active practitioner's session
 
