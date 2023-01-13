@@ -253,6 +253,7 @@ appointment1 = Appointment.create!(
     user_id: user1.id,
     practitioner_id: practitioner1.id,
     date: "2022-12-20",
+    time: "11:56",
     approved: true,
     appointment_type: "Consultation",
     appointment_info: "blah blah blah"
@@ -262,6 +263,7 @@ appointment2 = Appointment.create!(
     user_id: user1.id,
     practitioner_id: practitioner1.id,
     date: "2022-12-20",
+    time: "12:57",
     approved: false,
     appointment_type: "Consultation",
     appointment_info: "blah blah blah"
@@ -272,6 +274,7 @@ appointment3 = Appointment.create!(
     practitioner_id: other_practitioners.sample.id,
     date: "2022-12-20",
     approved: true,
+    time: "18:40",
     appointment_type: "Paediatrics",
     appointment_info: "blah blah blah"
 )
