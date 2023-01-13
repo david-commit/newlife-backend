@@ -2,6 +2,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.hosts << "newlife-production.up.railway.app"
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -13,7 +14,7 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
@@ -46,7 +47,7 @@ Rails.application.configure do
   config.log_level = :info
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -56,6 +57,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "newlife_backend_production"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.perform_deliveries = true
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -64,6 +66,17 @@ Rails.application.configure do
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
+
+  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    domain: "https://newlife-production.up.railway.app",
+    address: "smtp.sendgrid.net",
+    port: 587,
+    authentication: :plain,
+    user_name: "apikey",
+    password: ENV["SENDGRID_API_KEY"],
+    enable_starttls_auto: true
+  }
 
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
@@ -76,9 +89,9 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
-    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
   # Do not dump schema after migrations.
