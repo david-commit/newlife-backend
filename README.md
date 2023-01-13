@@ -19,18 +19,19 @@ Done:
 1. A user is able to sign up as a patient
 2. A user is able to log in as a patient
 3. A patient is able to book an appointment with a practitioner of their choice
-4. A patient is able to delete(descendant destroy) his/her account
-5. A user is able to view all and single shop products
-6. A user can post, show & delete their cart data to the DB
-
+4. A user is able to see a list of all practitioners
+5. A patient is able to delete(descendant destroy) his/her account
+6. A user is able to view all and single shop products
+7. A user can post, show & delete their cart data to the DB
+8. CRUD a practitioner
+9. A practitioner is able to log in to an existing account (created by Admin)
+10. 
 Doing:
 
-5. A practitioner is able to log in to an existing account (created by Admin)
-6. A practitioner can has access to all client records/details
+6. A practitioner can has access to all patient records/details
 7. A practitioner can CRUD an appointment with a patient
 8. A user can log in as an admin
 9. An admin can CRUD a shop product
-10. An admin can CRUD a practitioner
 11. An Admin can see the hospital's dashboard
 12. An Admin can see a list of all patients
 13. An Admin can log in and out
@@ -155,7 +156,7 @@ Response:
 ]
 ```
 
-4. PATEINT DETAILS - Adds user data to an already signed in patient's profile.
+4. PATEINT PROFILE DATA - Adds user data to an already signed in patient's profile.
 
    POST: `/patient_profiles`
 
@@ -289,9 +290,9 @@ Response:
 
    No response
 
-8. USER'S ORDERS - A patient can see all his/her orders
+8. USER'S ORDERS (INDEX & SHOW) - A patient can see all his/her orders
 
-   GET: `/users/:id/orders`
+   GET: `/users/:id/orders` & `/users/:id/orders/:id`
 
    Response:
 
@@ -421,7 +422,7 @@ Response:
 ]
 ```
 
-3. CREATE - Add a new practitioner
+3. SIGNUP / CREATE - Add a new practitioner
 
    POST: `practitioner_profiles`
 
@@ -474,7 +475,18 @@ Response:
 Response:
 
 ```json
-[]
+[
+  {
+    "practitioner": {
+      "id": 12,
+      "username": "mike",
+      "email": "mike@patient.com",
+      "appointments": [],
+      "practitioner_profiles": []
+    },
+    "jwt": "eyJh ... lWc"
+  }
+]
 ```
 
 5. LOGOUT - Deletes an active practitioner's session
