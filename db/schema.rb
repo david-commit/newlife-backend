@@ -131,7 +131,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_194143) do
     t.bigint "searchable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
+    t.index %w[searchable_type searchable_id],
+            name: "index_pg_search_documents_on_searchable"
   end
 
   create_table "practitioner_profiles", force: :cascade do |t|
@@ -149,7 +150,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_194143) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.string "job_title"
-    t.index ["practitioner_id"], name: "index_practitioner_profiles_on_practitioner_id"
+    t.index ["practitioner_id"],
+            name: "index_practitioner_profiles_on_practitioner_id"
   end
 
   create_table "practitioners", force: :cascade do |t|
