@@ -10,9 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_09_183951) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_11_235755) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "access_tokens", force: :cascade do |t|
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "username"
@@ -30,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_183951) do
     t.string "appointment_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "appointment_info"
     t.index ["practitioner_id"], name: "index_appointments_on_practitioner_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
@@ -59,6 +66,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_183951) do
     t.string "sender_class"
     t.string "receiver_class"
     t.index ["appointment_id"], name: "index_messages_on_appointment_id"
+  end
+
+  create_table "mpesas", force: :cascade do |t|
+    t.bigint "order_id"
+    t.string "checkoutRequestId"
+    t.string "merchantRequestId"
+    t.string "amount"
+    t.string "mpesaReceiptNumber"
+    t.string "phoneNumber"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_mpesas_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -119,6 +138,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_183951) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.string "job_title"
     t.index ["practitioner_id"], name: "index_practitioner_profiles_on_practitioner_id"
   end
 
@@ -197,6 +217,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_183951) do
   add_foreign_key "appointments", "users"
   add_foreign_key "dosage_considerations", "products"
   add_foreign_key "messages", "appointments"
+  add_foreign_key "mpesas", "orders"
   add_foreign_key "orders", "users"
   add_foreign_key "patient_profiles", "users"
   add_foreign_key "payments", "orders"

@@ -24,7 +24,8 @@ RSpec.describe Appointment, type: :model do
     Appointment.destroy_all
     appointment = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     )
 
     expect(appointment.id.nil?).to eql(false)
@@ -52,7 +53,8 @@ RSpec.describe Appointment, type: :model do
     Appointment.destroy_all
     appointment = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     )
 
     expect(appointment.messages).to be_kind_of(ActiveRecord::Associations::CollectionProxy)
@@ -81,7 +83,8 @@ RSpec.describe Appointment, type: :model do
     Appointment.destroy_all
     appointment = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     )  
     
     appointment_id = appointment.id
@@ -112,7 +115,8 @@ RSpec.describe Appointment, type: :model do
     Appointment.destroy_all
     appointment = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     )  
     
     appointment_id = appointment.id

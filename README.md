@@ -9,6 +9,9 @@ Newlife Hospital App is an application that looks to simplify healthcare process
 As a result of lack of proper management systems in the healthcare institutions, many patients succumb to their illnesses due to irregular checkups and appointments. Practitioners have a lot of patients to cater for making it easy to lose track of duties they are to attend to in a timely manner.
 Lack of proper planning can lead to dire consequences to both the medical institution and the practitioners themselves
 
+## Deployments
+deployed link https://newlife-production.up.railway.app
+
 ## MVP
 
 Done:
@@ -499,3 +502,4 @@ Response:
 ```json
 
 ```
+

@@ -31,7 +31,8 @@ RSpec.describe "Appointments", type: :request do
       "practitioner_id": practitioner.id,
       "date": "2022-12-21",
       "approved": false,
-      "appointment_type": "Normal" 
+      "appointment_type": "Normal",
+      "appointment_info": "blah blah blah"
     },
     headers: {
       "Accept": "application/json",
@@ -61,7 +62,8 @@ RSpec.describe "Appointments", type: :request do
     Appointment.destroy_all
     appointment = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     )
     
     patch "/appointments/#{appointment.id}", params: {"approved": true}, headers: {"Accept": "application/json", "Authorization": token}
@@ -89,7 +91,8 @@ RSpec.describe "Appointments", type: :request do
     Appointment.destroy_all
     appointment = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     )
     
     delete "/appointments/#{appointment.id}", params: {"approved": true}, headers: {"Accept": "application/json", "Authorization": token}
@@ -128,17 +131,20 @@ RSpec.describe "Appointments", type: :request do
     Appointment.destroy_all
     appointment = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     )
 
     appointment2 = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     )
     
     appointment2 = Appointment.create!(
       user_id: user2.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     ) 
     
     headers = {"Accept": "application/json"}
@@ -178,17 +184,20 @@ RSpec.describe "Appointments", type: :request do
     Appointment.destroy_all
     appointment = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     )
 
     appointment2 = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner2.id
+      practitioner_id: practitioner2.id,
+      appointment_info: "blah blah blah"
     )
     
     appointment2 = Appointment.create!(
       user_id: user2.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     ) 
     
     get "/practitioners/#{practitioner2.id}/appointments", headers: {"Accept": "application/json", "Authorization": token}

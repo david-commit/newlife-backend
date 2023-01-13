@@ -22,7 +22,8 @@ RSpec.describe "Messages", type: :request do
     Appointment.destroy_all
     appointment = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     )
 
     post '/messages', params: {
@@ -62,7 +63,8 @@ RSpec.describe "Messages", type: :request do
     Appointment.destroy_all
     appointment = Appointment.create!(
       user_id: user.id,
-      practitioner_id: practitioner.id
+      practitioner_id: practitioner.id,
+      appointment_info: "blah blah blah"
     )
 
     Message.destroy_all
@@ -132,17 +134,20 @@ RSpec.describe "Messages", type: :request do
     Appointment.destroy_all
     appointment1 = Appointment.create!(
       user_id: user1.id,
-      practitioner_id: practitioner1.id
+      practitioner_id: practitioner1.id,
+      appointment_info: "blah blah blah"
     )
 
     appointment2 = Appointment.create!(
       user_id: user1.id,
-      practitioner_id: practitioner2.id
+      practitioner_id: practitioner2.id,
+      appointment_info: "blah blah blah"
     )
     
     appointment3 = Appointment.create!(
       user_id: user2.id,
-      practitioner_id: practitioner2.id
+      practitioner_id: practitioner2.id,
+      appointment_info: "blah blah blah"
     )    
 
     Message.destroy_all
