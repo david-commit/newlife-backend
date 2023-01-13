@@ -5,4 +5,5 @@ class Appointment < ApplicationRecord
 
   validates :user, presence: true
   validates :practitioner, presence: true
+  validates :appointment_info, presence: true
 end

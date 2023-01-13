@@ -39,7 +39,7 @@ class AppointmentsController < ApplicationController
     end
 
     def appointment_params
-        params.permit(:user_id, :practitioner_id, :date, :appointment_type)
+        params.permit(:user_id, :practitioner_id, :date, :appointment_type, :appointment_info)
     end
 
     def record_invalid(invalid)
