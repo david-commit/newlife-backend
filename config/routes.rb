@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :side_effects, only: [:create, :index, :show, :update, :destroy]
   resources :dosage_considerations, only: [:create, :index, :show, :update, :destroy]
   resources :users, only: [:destroy]
+  resources :practitioners, only: [:index]
 
   resources :admins, only: [:show] do
     resources :products, only: [:create, :index, :show, :update, :destroy]

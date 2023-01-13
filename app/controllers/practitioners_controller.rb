@@ -27,6 +27,10 @@ class PractitionersController < ApplicationController
         render json: {practitioner: practitioner_info, jwt: token }, status: :created
     end
 
+    def index
+        render json: Practitioner.all, status: :ok
+    end
+
     def destroy
         make_login_status_false
         head :no_content
