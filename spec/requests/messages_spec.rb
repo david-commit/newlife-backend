@@ -28,8 +28,8 @@ RSpec.describe "Messages", type: :request do
 
     post '/messages', params: {
         "content": "Message 1",
-        "sender_id": 1,
-        "receiver_id": 1,
+        "sender_id": practitioner.id,
+        "receiver_id": user.id,
         "sender_class": "Practitioner",
         "receiver_class": "User",
         "appointment_id": appointment.id 

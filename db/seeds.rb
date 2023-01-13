@@ -44,13 +44,62 @@ puts "4. seeding products..."
 
 products = []
 
+product_images = [
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/garden-of-life-sport-certified-grass-fed-whey-protein-vanilla-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/muscle-core-100-whey-platinum-standard-10-lb-chocolate-flavor-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/muscle-core-100-whey-platinum-standard-chocolate-2lb-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/muscle-core-100-whey-platinum-standard-chocolate-5lb-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/detour-lm-cookie-dough-caramel-crisp-90g-12ct-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/detour-lower-sugar-caramel-peanut-85-g-box-of-12-pieces-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/detour-lower-sugar-chocolate-chip-caramel-85-g-box-of-12-pieces-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/muscle-core-high-protein-wafer-bar-dark-chocolate-12x40g-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/bio-nutrition-100-natural-raspberry-ketone-60-caps-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/bio-nutrition-activated-coconut-charcoal-520mg-90-capsules-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/bio-nutrition-b-12-sublingual-6000-mcg-50-tablets-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/bio-nutrition-bee-propolis-1000mg-60-capsules-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/bio-nutrition-bio-krill-500mg-45-softgels-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/bio-nutrition-bio-n-raspberry-ketone-diet-60-vegicaps-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/bio-nutrition-bio-n-saffron-extract-50-vegicaps-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/bio-nutrition-bio-n-super-konjac-diet-90-vegicaps-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/bio-nutrition-black-seed-oil-1000mg-90-capsules-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/bio-nutrition-black-seed-oil-8-oz-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/bio-nutrition-caraway-seed-60-capsules-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/bio-nutrition-gout-out-60s-vcaps-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/bio-nutrition-graviolla-60-veg-capsules-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/bio-nutrition-green-coffee-bean-800-mg-50-capsules-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/bio-nutrition-kidney-bladder-wellness-60-capsules-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/gaia-herbs-kids-black-elderberry-syrup-3-oz-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/gaia-herbs-kids-bronchial-wellness-3-oz-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/carlson-chewable-calcium-60-tablets-for-kids-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/carlson-kids-chewable-vit-c-60-softgels-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/garden-of-life-dr-formulated-probiotics-organic-for-kids-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/garden-of-life-multivitamin-code-supplement-for-kids-60-chewable-bear-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/good-day-chocolate-calm-supplement-8-ct-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/good-day-chocolate-kids-calm-supplement-50-ct-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/good-day-chocolate-kids-multivitamin-50-ct-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/barleans-flaxseed-powder-14-oz-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/bio-nutrition-moringa-5000-liquid-4-oz-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/kiki-health-organic-aloe-ferox-juice-500ml.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/kiki-health-organic-wheatgrass-powder-100g-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/natures-aid-organic-ultimate-superfood-60-caps-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/fitness-bull-carb-blocker-60-capsules-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/garden-of-life-organic-fit-weight-loss-bar-chocolate-fudge-55g-12ct-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/ener-c-cranberry-30-pks-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/ener-c-orange-30-pks-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/ener-c-peach-mango-30-pks-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/ener-c-pineapple-coconut-30-pks-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/ener-c-raspberry-30-pks-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/keto-science-keto-burn-60-caps-247x247.jpg", 
+    "https://www.medicaltradehub.com/wp-content/uploads/2022/12/ketoscience-ketogenic-meal-shake-nat-choco-14-serve-539g-247x247.jpg"
+]
+
 bpd_drugs = %w(Lamictal Lamotrigine Latuda Sero Abilify Vraylar)
 bpd_drugs.length.times do |i|
     products << Product.create!(
         name: bpd_drugs[i],
         category: "Bipolar Disorder",
         price: rand()*rand(1..1000),
-        image: "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
+        image: product_images[products.length] || "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
         stock: rand(0..100)
     )
 end
@@ -61,7 +110,7 @@ cancer_drugs.length.times do |i|
         name: cancer_drugs[i],
         category: "Cancer",
         price: rand()*rand(1..1000),
-        image: "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
+        image: product_images[products.length] || "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
         stock: rand(0..100)
     )
 end
@@ -72,7 +121,7 @@ depression_drugs.length.times do |i|
         name: depression_drugs[i],
         category: "Depression",
         price: rand()*rand(1..1000),
-        image: "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
+        image: product_images[products.length] || "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
         stock: rand(0..100)
     )
 end
@@ -83,7 +132,7 @@ anxiety_drugs.length.times do |i|
         name: anxiety_drugs[i],
         category: "Anxiety",
         price: rand()*rand(1..1000),
-        image: "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
+        image: product_images[products.length] || "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
         stock: rand(0..100)
     )
 end
@@ -94,7 +143,7 @@ gastrointestinal_surgery_drugs.length.times do |i|
         name: gastrointestinal_surgery_drugs[i],
         category: "Gastrointestinal Surgery",
         price: rand()*rand(1..1000),
-        image: "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
+        image: product_images[products.length] || "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
         stock: rand(0..100)
     )
 end
@@ -105,7 +154,7 @@ erectile_dysfunction_drugs.length.times do |i|
         name: erectile_dysfunction_drugs[i],
         category: "Erectile Dysfunction",
         price: rand()*rand(1..1000),
-        image: "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
+        image: product_images[products.length] || "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
         stock: rand(0..100)
     )
 end
@@ -116,7 +165,18 @@ diabetes_1_drugs.length.times do |i|
         name: diabetes_1_drugs[i],
         category: "Diabetes Type 1",
         price: rand()*rand(1..1000),
-        image: "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
+        image: product_images[products.length] || "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
+        stock: rand(0..100)
+    )
+end
+
+zero_price_drugs = %w(Masks WheelChair)
+zero_price_drugs.length.times do |i|
+    products << Product.create!(
+        name: zero_price_drugs[i],
+        category: "Free",
+        price: 0,
+        image: product_images[products.length] || "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
         stock: rand(0..100)
     )
 end
@@ -193,6 +253,7 @@ appointment1 = Appointment.create!(
     user_id: user1.id,
     practitioner_id: practitioner1.id,
     date: "2022-12-20",
+    time: "11:56",
     approved: true,
     appointment_type: "Consultation",
     appointment_info: "blah blah blah"
@@ -202,6 +263,7 @@ appointment2 = Appointment.create!(
     user_id: user1.id,
     practitioner_id: practitioner1.id,
     date: "2022-12-20",
+    time: "12:57",
     approved: false,
     appointment_type: "Consultation",
     appointment_info: "blah blah blah"
@@ -212,6 +274,7 @@ appointment3 = Appointment.create!(
     practitioner_id: other_practitioners.sample.id,
     date: "2022-12-20",
     approved: true,
+    time: "18:40",
     appointment_type: "Paediatrics",
     appointment_info: "blah blah blah"
 )
