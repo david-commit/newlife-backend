@@ -3,8 +3,12 @@ class CartController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
     def show
-        last_order_id = Order.last&.id
-        render json: ShoppingCart.where("order_id = ?", last_order_id), status: :ok
+        if(params["show_details"] == "true")
+            render json: Order.last, status: :ok
+        else
+            last_order_id = Order.last&.id
+            render json: ShoppingCart.where("order_id = ?", last_order_id), status: :ok
+        end
     end
 
     private
