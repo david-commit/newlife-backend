@@ -9,10 +9,12 @@ Rails.application.routes.draw do
   post "/practitioner/login", to: "practitioner_sessions#create"
   delete "/practitioner/logout", to: "practitioner_sessions#destroy"
 
-  post "admin/signup", to: "admins#create"
-  post "admin/login", to: "admin_sessions#create"
-  delete "admin/logout", to: "admin_sessions#destroy"
-  delete "admin/delete_account", to: "admins#destroy"
+  post "/admin/signup", to: "admins#create"
+  post "/admin/login", to: "admin_sessions#create"
+  delete "/admin/logout", to: "admin_sessions#destroy"
+  delete "/admin/delete_account", to: "admins#destroy"
+
+  get "/cart", to: "cart#show"
 
   resources :products, only: [:index, :show]
   resources :messages, only: [:create]
