@@ -125,7 +125,7 @@ GEM
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.8.0)
+    mail (2.8.0.1)
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
@@ -149,7 +149,7 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.5.8)
-    nokogiri (1.13.10-x86_64-linux)
+    nokogiri (1.14.0-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.4.5)
@@ -226,7 +226,7 @@ GEM
     ruby_http_client (3.5.5)
     sendgrid-ruby (6.6.2)
       ruby_http_client (~> 3.4)
-    sorbet-runtime (0.5.10611)
+    sorbet-runtime (0.5.10626)
     syntax_tree (4.3.0)
       prettier_print (>= 1.0.2)
     thor (1.2.1)
