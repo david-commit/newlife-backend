@@ -251,9 +251,23 @@ practitioner1 = Practitioner.create!(
     department_id: departments.sample.id
 )
 
+practitioner_images = [
+    "https://i.postimg.cc/pLQ1G3Xm/black-doc-cropped.png",
+    "https://i.postimg.cc/j22dSzCb/black-female-nurse-smiling-face.png",
+    "https://i.postimg.cc/LX6Zjghy/dark-female-doctor-face.png",
+    "https://i.postimg.cc/RVCbqgMf/black-male-doc-with-tab-face.png",
+    "https://i.postimg.cc/kMNg7g4G/black-canada-nurse-cropped.png",
+    "https://i.postimg.cc/mrQ7RGFs/black-nurse-pointing-cropped.png",
+    "https://i.postimg.cc/MpwQDFF3/Circilar-balck-male-focused.png",
+    "https://i.postimg.cc/nrVWB2tX/circular-black-doc.png",
+    "https://i.postimg.cc/V5Qb2GL6/dark-male-doctor.png",
+    "https://i.postimg.cc/Xq3r8Z2G/black-male-doctor-smiling.png",
+    "https://i.postimg.cc/FsrMt98j/black-female-doc-with-file-cropped.png"
+    ]
+
 
 other_practitioners = []
-10.times do |i|
+practitioner_images.length.times do |i|
     other_practitioners << Practitioner.create!(
         username: Faker::Internet.username,
         password: Faker::Internet.password,
@@ -355,7 +369,7 @@ david_profile = PractitionerProfile.create!(
     job_title: Faker::Job.title
 )
 
-10.times do |i|
+other_practitioners.length.times do |i|
     PractitionerProfile.create!(
         practitioner_id: other_practitioners[i].id,
         first_name: Faker::Name.first_name,
@@ -367,7 +381,8 @@ david_profile = PractitionerProfile.create!(
         weight: (rand()+rand(50..100)).round(2),
         phone_number: "0756291474",
         bmi: (rand()+rand(15..30)).round(2),
-        job_title: Faker::Job.title       
+        job_title: Faker::Job.title,
+        image: practitioner_images[i]       
     )    
 end
 
