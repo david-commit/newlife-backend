@@ -52,6 +52,8 @@ end
 
 gem "jwt", "~> 2.6"
 gem "byebug", "~> 11.1"
-
+gem "pg_search"
 gem "sendgrid-ruby"
 gem 'rest-client', '~> 2.0'
+gem 'devise'
+gem 'devise-jwt'

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :mpesas
   resources :responses
   post "/signup", to: "users#create"
@@ -10,10 +11,12 @@ Rails.application.routes.draw do
   post "/practitioner/login", to: "practitioner_sessions#create"
   delete "/practitioner/logout", to: "practitioner_sessions#destroy"
 
-  post "admin/signup", to: "admins#create"
-  post "admin/login", to: "admin_sessions#create"
-  delete "admin/logout", to: "admin_sessions#destroy"
-  delete "admin/delete_account", to: "admins#destroy"
+  post "/admin/signup", to: "admins#create"
+  post "/admin/login", to: "admin_sessions#create"
+  delete "/admin/logout", to: "admin_sessions#destroy"
+  delete "/admin/delete_account", to: "admins#destroy"
+
+  get "/cart", to: "cart#show"
 
   resources :products, only: %i[index show]
   resources :messages, only: [:create]
@@ -51,7 +54,8 @@ Rails.application.routes.draw do
   resources :mpesas
   post "/stkpush", to: "mpesas#stkpush"
   post "/polling_payment", to: "mpesas#polling_payment"
-
+  post "/practitionerSearch", to: "practitioner_profiles#search"
+  post "/productSearch", to: "products#search"
   resources :users do
     member { post "send_email" }
   end
@@ -64,7 +68,6 @@ Rails.application.routes.draw do
   # resources :shopping_carts
   # resources :products
   # resources :orders
-  resources :users
   # resources :payments
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

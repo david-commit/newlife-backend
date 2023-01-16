@@ -1,4 +1,11 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable,
+         :jwt_authenticatable,
+         :registerable,
+         jwt_revocation_strategy: JwtDenylist
+         
   has_secure_password
 
   has_many :appointments, dependent: :destroy
@@ -25,7 +32,6 @@ class User < ApplicationRecord
               message:
                 "must include at least one lowercase letter, one uppercase letter, one digit and have minimum 8 characters"
             }
-  validates :email, presence: { message: "Please add an Email" }
+  validates :email, presence: { message: "Please add an Email" }, uniqueness: true
 
 end
-

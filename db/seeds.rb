@@ -15,17 +15,30 @@ admin1 = Admin.create!(
 )
 
 puts "1. seeding user..."
+users = []
+
 user1 = User.create!(
     username: "vincent",
     password: "Vincent111",
     email: "vincent@patient.com"
 )
+users << user1
 
 user2 = User.create!(
     username: "enock",
     password: "Enock111",
     email: "enock@patient.com"
 )
+users << user2
+
+#Other users
+10.times do |i|
+    users << User.create!(
+        username: Faker::Internet.username,
+        password: Faker::Internet.password(min_length: 9, max_length: 14, mix_case: true) + i.to_s,
+        email: Faker::Internet.email
+    )
+end
 
 
 puts "2. seeding order..."
@@ -181,14 +194,46 @@ zero_price_drugs.length.times do |i|
     )
 end
 
+puts "5. seeding product reviews..."
+products.each do |product|
+    rand(1..10).times do
+        Review.create!(
+            rating: rand(1..5),
+            description_header: Faker::Lorem.sentence(word_count: rand(1..4)),
+            description_content: Faker::Lorem.paragraph(sentence_count: rand(3..8)),
+            product_id: product.id,
+            user_id: users.sample.id
+        )
+    end
+end
 
-puts "5. seeding shopping_cart..."
+puts "6. seeding product dosage considerations..."
+products.each do |product|
+    rand(1..4).times do
+        DosageConsideration.create!(
+            consideration: Faker::Lorem.sentence(word_count: rand(1..4)),
+            product_id: product.id
+        )
+    end
+end
+
+puts "7. seeding side effects..."
+products.each do |product|
+    rand(1..6).times do
+        SideEffect.create!(
+            side_effect: Faker::Lorem.sentence(word_count: rand(1..4)),
+            product_id: product.id
+        )
+    end
+end
+
+puts "8. seeding shopping_cart..."
 5.times do
     ShoppingCart.create!(order_id: order1.id, product_id: products.sample.id)
 end
 
 
-puts "6. seeding department..."
+puts "9. seeding department..."
 department_names = ["Mental Health", "Diabetes", "Cancer"]
 departments = []
 
@@ -198,7 +243,7 @@ end
 
 
 
-puts "7. seeding practitioners..."
+puts "10. seeding practitioners..."
 practitioner1 = Practitioner.create!(
     username: "david",
     password: "david",
@@ -218,7 +263,7 @@ other_practitioners = []
 end
 
 
-puts "8. seeding patient_profile"
+puts "11. seeding patient_profile"
 vincent_profile = PatientProfile.create!(
     user_id: user1.id,
     first_name: "Vincent",
@@ -248,7 +293,7 @@ enock_profile = PatientProfile.create!(
 )
 
 
-puts "9. seeding appointment..."
+puts "12. seeding appointment..."
 appointment1 = Appointment.create!(
     user_id: user1.id,
     practitioner_id: practitioner1.id,
@@ -280,7 +325,7 @@ appointment3 = Appointment.create!(
 )
 
 
-puts "10. seeding messages..."
+puts "13. seeding messages..."
 5.times do
     sender = [user1, practitioner1].sample
     receiver = (sender.class.to_s == "User")? practitioner1 : user1
@@ -295,7 +340,7 @@ puts "10. seeding messages..."
 end
 
 
-puts "11. seeding practitioner_profile..."
+puts "14. seeding practitioner_profile..."
 david_profile = PractitionerProfile.create!(
     practitioner_id: practitioner1.id,
     first_name: "David",
