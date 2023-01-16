@@ -53,7 +53,8 @@ Rails.application.routes.draw do
   resources :mpesas
   post "/stkpush", to: "mpesas#stkpush"
   post "/polling_payment", to: "mpesas#polling_payment"
-
+  post "/practitionerSearch", to: "practitioner_profiles#search"
+  post "/productSearch", to: "products#search"
   resources :users do
     member { post "send_email" }
   end

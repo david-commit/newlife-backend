@@ -29,7 +29,7 @@
 /config/master.key
 sendgrid.env
 config/local_env.yml
-
+/thunder-tests
 # Ignore application configuration
 # /config/application.yml
 
