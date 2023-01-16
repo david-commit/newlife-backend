@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_01_13_204127) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_trgm"
   enable_extension "plpgsql"
 
   create_table "access_tokens", force: :cascade do |t|
@@ -133,8 +132,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_204127) do
     t.bigint "searchable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index %w[searchable_type searchable_id],
-            name: "index_pg_search_documents_on_searchable"
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
   end
 
   create_table "practitioner_profiles", force: :cascade do |t|
