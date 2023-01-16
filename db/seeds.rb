@@ -183,16 +183,23 @@ diabetes_1_drugs.length.times do |i|
     )
 end
 
-zero_price_drugs = %w(Masks WheelChair)
-zero_price_drugs.length.times do |i|
+# zero_price_drugs = %w(Masks WheelChair)
+# zero_price_drugs.length.times do |i|
     products << Product.create!(
-        name: zero_price_drugs[i],
-        category: "Free",
+        name: "Masks",
+        category: "Donation",
         price: 0,
-        image: product_images[products.length] || "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
+        image: "https://i.postimg.cc/m2Z9qZff/free-size-100-3-layer-pharmaceutical-mask-100-pcs-surgical-mask-original-imagfutxyuhft6jp.jpg",
         stock: rand(0..100)
     )
-end
+    products << Product.create!(
+        name: "Wheelchair",
+        category: "Donation",
+        price: 0,
+        image: "https://i.postimg.cc/766vdTVJ/71w-EZky-Qc-YL.jpg",
+        stock: rand(0..100)
+    )
+# end
 
 puts "5. seeding product reviews..."
 products.each do |product|
@@ -252,7 +259,6 @@ practitioner1 = Practitioner.create!(
 )
 
 practitioner_images = [
-    "https://i.postimg.cc/pLQ1G3Xm/black-doc-cropped.png",
     "https://i.postimg.cc/j22dSzCb/black-female-nurse-smiling-face.png",
     "https://i.postimg.cc/LX6Zjghy/dark-female-doctor-face.png",
     "https://i.postimg.cc/RVCbqgMf/black-male-doc-with-tab-face.png",
@@ -262,7 +268,8 @@ practitioner_images = [
     "https://i.postimg.cc/nrVWB2tX/circular-black-doc.png",
     "https://i.postimg.cc/V5Qb2GL6/dark-male-doctor.png",
     "https://i.postimg.cc/Xq3r8Z2G/black-male-doctor-smiling.png",
-    "https://i.postimg.cc/FsrMt98j/black-female-doc-with-file-cropped.png"
+    "https://i.postimg.cc/FsrMt98j/black-female-doc-with-file-cropped.png",
+    "https://i.postimg.cc/wvz2R5SS/front-view-nurse-wearing-stethoscope.jpg"
     ]
 
 
@@ -366,7 +373,8 @@ david_profile = PractitionerProfile.create!(
     weight: (rand()+rand(50..100)).round(2),
     phone_number: "0756291474",
     bmi: (rand()+rand(15..30)).round(2),
-    job_title: Faker::Job.title
+    job_title: Faker::Job.title,
+    image: "https://i.postimg.cc/pLQ1G3Xm/black-doc-cropped.png"
 )
 
 other_practitioners.length.times do |i|
