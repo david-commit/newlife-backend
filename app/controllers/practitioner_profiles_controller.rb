@@ -1,7 +1,7 @@
 class PractitionerProfilesController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-  skip_before_action :authorized, only: %i[search]
+  skip_before_action :authorized, only: %i[search, index, show]
 
 
   # before_action :authorize
@@ -54,7 +54,8 @@ class PractitionerProfilesController < ApplicationController
       :weight,
       :phone_number,
       :bmi,
-      :job_title
+      :job_title,
+      :image
     )
   end
 
