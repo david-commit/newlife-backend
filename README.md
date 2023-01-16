@@ -10,6 +10,7 @@ As a result of lack of proper management systems in the healthcare institutions,
 Lack of proper planning can lead to dire consequences to both the medical institution and the practitioners themselves
 
 ## Deployments
+
 deployed link https://newlife-production.up.railway.app
 
 ## MVP
@@ -25,16 +26,16 @@ Done:
 7. A user can post, show & delete their cart data to the DB
 8. CRUD a practitioner
 9. A practitioner is able to log in to an existing account (created by Admin)
-10. 
+
 Doing:
 
-6. A practitioner can has access to all patient records/details
-7. A practitioner can CRUD an appointment with a patient
-8. A user can log in as an admin
-9. An admin can CRUD a shop product
-11. An Admin can see the hospital's dashboard
-12. An Admin can see a list of all patients
-13. An Admin can log in and out
+11. A practitioner can has access to all patient records/details
+12. A practitioner can CRUD an appointment with a patient
+13. A user can log in as an admin
+14. An admin can CRUD a shop product
+15. An Admin can see the hospital's dashboard
+16. An Admin can see a list of all patients
+17. An Admin can log in and out
 
 # API Documentation
 
@@ -47,7 +48,70 @@ Doing:
    Response:
 
 ```json
-[]
+[
+  {
+    "id": 1,
+    "username": "vincent",
+    "email": "vincent@patient.com",
+    "first_name": "David",
+    "last_name": "Ondiege",
+    "orders": [
+      {
+        "id": 1,
+        "delivered": false
+      }
+    ],
+    "appointments": [
+      {
+        "id": 1,
+        "date": "2022-12-20",
+        "approved": true,
+        "appointment_type": "Consultation",
+        "appointment_info": "blah blah blah",
+        "time": "11:56"
+      }
+    ],
+    "patient_profiles": [
+      {
+        "id": 1,
+        "first_name": "Vincent",
+        "last_name": "Makokha",
+        "bio": "Neque earum at.",
+        "dob": "2022-12-20",
+        "location": "Nairobi",
+        "blood_group": "0-",
+        "height": 1.61,
+        "weight": 83.94,
+        "phone_number": "0701807557",
+        "bmi": 15.76
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "username": "enock",
+    "email": "enock@patient.com",
+    "first_name": "Venessa",
+    "last_name": "Smith",
+    "orders": [],
+    "appointments": [],
+    "patient_profiles": [
+      {
+        "id": 2,
+        "first_name": "Enock",
+        "last_name": "Mokua",
+        "bio": "Odit asperiores amet. Optio totam quidem. Optio accusamus eos. In repellat quibusdam. Quod error sed.",
+        "dob": "2022-12-20",
+        "location": "Nairobi",
+        "blood_group": "A+",
+        "height": 1.54,
+        "weight": 86.2,
+        "phone_number": "0721409448",
+        "bmi": 20.08
+      }
+    ]
+  }
+]
 ```
 
 2. LOGIN - Creates a session that enables auto-login for an already pre-existing user
@@ -57,13 +121,11 @@ Doing:
    Post data:
 
 ```json
-[
-  {
-    "username": "vincent",
-    "email": "vincent@patient.com",
-    "password": "Vincent111"
-  }
-]
+{
+  "username": "vincent",
+  "email": "vincent@patient.com",
+  "password": "Vincent111"
+}
 ```
 
 Response:
@@ -128,14 +190,12 @@ Response:
    Post data:
 
 ```json
-[
-  {
-    "username": "cynthia",
-    "password": "Cynthia111",
-    "password_confirmation": "Cynthia111",
-    "email": "cynthia@patient.com"
-  }
-]
+{
+  "username": "cynthia",
+  "password": "Cynthia111",
+  "password_confirmation": "Cynthia111",
+  "email": "cynthia@patient.com"
+}
 ```
 
 Response:
@@ -163,21 +223,19 @@ Response:
 Post data:
 
 ```json
-[
-  {
-    "user_id": "3",
-    "first_name": "Mary",
-    "last_name": "Wangari",
-    "bio": "Lorem qwertyui qwertyu qwert",
-    "dob": "2022-12-20",
-    "location": "Nairobi",
-    "blood_group": "A+",
-    "height": "3",
-    "weight": "56",
-    "phone_number": "1234567890",
-    "bmi": "45"
-  }
-]
+{
+  "user_id": "3",
+  "first_name": "Mary",
+  "last_name": "Wangari",
+  "bio": "Lorem qwertyui qwertyu qwert",
+  "dob": "2022-12-20",
+  "location": "Nairobi",
+  "blood_group": "A+",
+  "height": "3",
+  "weight": "56",
+  "phone_number": "1234567890",
+  "bmi": "45"
+}
 ```
 
 Response:
@@ -212,15 +270,13 @@ Response:
    Post data:
 
 ```json
-[
-  {
-    "user_id": "3",
-    "practitioner_id": 1,
-    "date": "2022-12-20",
-    // "approved": true,
-    "appointment_type": "Normal"
-  }
-]
+{
+  "user_id": "3",
+  "practitioner_id": 1,
+  "date": "2022-12-20",
+  // "approved": true,
+  "appointment_type": "Normal"
+}
 ```
 
 Response:
@@ -253,12 +309,10 @@ Response:
    Post data:
 
 ```json
-[
-  {
-    "date": "2023-01-20",
-    "approved": true
-  }
-]
+{
+  "date": "2023-01-20",
+  "approved": true
+}
 ```
 
 Response:
@@ -429,14 +483,12 @@ Response:
    Post data:
 
 ```json
-[
-  {
-    "username": "mike",
-    "password": "MikeMike111",
-    "email": "mike@patient.com",
-    "department_id": 1
-  }
-]
+{
+  "username": "mike",
+  "password": "MikeMike111",
+  "email": "mike@patient.com",
+  "department_id": 1
+}
 ```
 
 Response:
@@ -463,13 +515,11 @@ Response:
    Post data:
 
 ```json
-[
-  {
-    "username": "mikw",
-    "email": "mike@patient.com",
-    "password": "MikeMike111"
-  }
-]
+{
+  "username": "mikw",
+  "email": "mike@patient.com",
+  "password": "MikeMike111"
+}
 ```
 
 Response:
@@ -506,12 +556,23 @@ Response:
    Post data:
 
 ```json
-
+{
+  "username": "admin",
+  "password": "Admin111"
+}
 ```
 
 Response:
 
 ```json
-
+[
+  {
+    "admin": {
+      "id": 1,
+      "username": "admin",
+      "email": "admin@newlife.com"
+    },
+    "jwt": "eyJhbGciOiJIUzI1NiJ9.eyJhZG1pbl9pZCI6MX0.RfiiVDDCOCd1TXdGycazUDirDiQ_5fYBlesoKBaUsJ8"
+  }
+]
 ```
-
