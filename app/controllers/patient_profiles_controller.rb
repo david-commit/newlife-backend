@@ -28,12 +28,8 @@ class PatientProfilesController < ApplicationController
     end
     
     private
-    def authorize
-        User.find(session[:user_id])
-    end
-
     def patient_profile_params
-        params.permit(:user_id, :first_name, :last_name, :bio, :dob, :location, :blood_group, :height, :weight, :phone_number, :bmi)
+        params.permit(:user_id, :first_name, :last_name, :bio, :dob, :location, :blood_group, :height, :weight, :phone_number, :bmi, :email)
     end
 
     def record_invalid(invalid)
