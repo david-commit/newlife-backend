@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :mpesas
   resources :responses
   post "/signup", to: "users#create"
