@@ -302,7 +302,6 @@ practitioner1 =
   )
 
 practitioner_images = %w[
-  https://i.postimg.cc/pLQ1G3Xm/black-doc-cropped.png
   https://i.postimg.cc/j22dSzCb/black-female-nurse-smiling-face.png
   https://i.postimg.cc/LX6Zjghy/dark-female-doctor-face.png
   https://i.postimg.cc/RVCbqgMf/black-male-doc-with-tab-face.png
@@ -313,6 +312,7 @@ practitioner_images = %w[
   https://i.postimg.cc/V5Qb2GL6/dark-male-doctor.png
   https://i.postimg.cc/Xq3r8Z2G/black-male-doctor-smiling.png
   https://i.postimg.cc/FsrMt98j/black-female-doc-with-file-cropped.png
+  https://i.postimg.cc/nrWR23zz/front-view-nurse-wearing-stethoscope.jpg
 ]
 
 other_practitioners = []

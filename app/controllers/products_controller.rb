@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
 
   def update
     if (params[:admin_id])
-      product = Product.find(params[:product_id])
+      product = Product.find(params[:id])
       product.update(product_params)
       render json: product, status: :created
     else
@@ -42,7 +42,7 @@ class ProductsController < ApplicationController
 
   def destroy
     if (params[:admin_id])
-      product = Product.find(params[:product_id])
+      product = Product.find(params[:id])
       product.destroy
       head :no_content
     else
