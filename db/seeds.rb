@@ -232,6 +232,7 @@ diabetes_1_drugs.length.times do |i|
   )
 end
 
+
 zero_price_drugs = %w[Masks WheelChair]
 zero_price_drugs.length.times do |i|
   products << Product.create!(
@@ -415,25 +416,28 @@ david_profile =
     blood_group: "B-",
     weight: (rand() + rand(50..100)).round(2),
     phone_number: "0756291474",
-    bmi: (rand() + rand(15..30)).round(2),
-    job_title: Faker::Job.title
-  )
+    bmi: (rand()+rand(15..30)).round(2),
+    job_title: Faker::Job.title,
+    image: "https://i.postimg.cc/pLQ1G3Xm/black-doc-cropped.png",
+    height: (rand()+rand(50..200)).round(2)
+)
 
 other_practitioners.length.times do |i|
-  PractitionerProfile.create!(
-    practitioner_id: other_practitioners[i].id,
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    bio: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
-    dob: "2022-12-20",
-    location: Faker::Address.city,
-    blood_group: "B-",
-    weight: (rand() + rand(50..100)).round(2),
-    phone_number: "0756291474",
-    bmi: (rand() + rand(15..30)).round(2),
-    job_title: Faker::Job.title,
-    image: practitioner_images[i]
-  )
+    PractitionerProfile.create!(
+        practitioner_id: other_practitioners[i].id,
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        bio: Faker::Lorem.paragraph(sentence_count: rand(1..5)),
+        dob: "2022-12-20",
+        location: Faker::Address.city,
+        blood_group: "B-",
+        weight: (rand()+rand(50..100)).round(2),
+        phone_number: "0756291474",
+        bmi: (rand()+rand(15..30)).round(2),
+        job_title: Faker::Job.title,
+        image: practitioner_images[i],
+        height: (rand()+rand(50..200)).round(2)
+    )    
 end
 
 puts "Seeding completed!"
