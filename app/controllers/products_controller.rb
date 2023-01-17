@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
     product = Product.search_by_name(params[:query])
     render json: product
   end
+  
   def create
     if (params[:admin_id])
       render json: Product.create!(product_params), status: :created
