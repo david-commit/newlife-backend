@@ -374,7 +374,8 @@ david_profile = PractitionerProfile.create!(
     phone_number: "0756291474",
     bmi: (rand()+rand(15..30)).round(2),
     job_title: Faker::Job.title,
-    image: "https://i.postimg.cc/pLQ1G3Xm/black-doc-cropped.png"
+    image: "https://i.postimg.cc/pLQ1G3Xm/black-doc-cropped.png",
+    height: (rand()+rand(50..200)).round(2)
 )
 
 other_practitioners.length.times do |i|
@@ -390,7 +391,8 @@ other_practitioners.length.times do |i|
         phone_number: "0756291474",
         bmi: (rand()+rand(15..30)).round(2),
         job_title: Faker::Job.title,
-        image: practitioner_images[i]       
+        image: practitioner_images[i],
+        height: (rand()+rand(50..200)).round(2)
     )    
 end
 
