@@ -6,10 +6,10 @@ class UserSerializer < ActiveModel::Serializer
   has_many :patient_profiles
 
   def first_name
-    PractitionerProfile.find_by(id: self.object.id)&.first_name
+    PatientProfile.find_by(id: self.object.id)&.first_name
   end
 
   def last_name
-    PractitionerProfile.find_by(id: self.object.id)&.last_name
+    PatientProfile.find_by(id: self.object.id)&.last_name
   end
 end
