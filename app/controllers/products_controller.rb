@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_record_not_found
-  skip_before_action :authorized, only: %i[index show search]
+  skip_before_action :authorized, only: %i[index show search average_rating]
 
   def index
     render json: Product.all, status: :ok
@@ -15,12 +15,19 @@ class ProductsController < ApplicationController
     product = Product.search_by_name(params[:query])
     render json: product
   end
+
   def create
     if (params[:admin_id])
       render json: Product.create!(product_params), status: :created
     else
       render json: { error: "Not authorized" }, status: 401
     end
+  end
+
+  def average_rating
+    product = Product.find(params[:id])
+    average_rating = product.average_rating
+    render json: { average_rating: average_rating }
   end
 
   def update

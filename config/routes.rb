@@ -55,6 +55,7 @@ Rails.application.routes.draw do
   post "/polling_payment", to: "mpesas#polling_payment"
   post "/practitionerSearch", to: "practitioner_profiles#search"
   post "/productSearch", to: "products#search"
+  get "/products/:id/average_rating", to: "products#average_rating"
   resources :users do
     member { post "send_email" }
   end
