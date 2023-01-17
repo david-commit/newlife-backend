@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :appointments, only: %i[create destroy update]
   resources :orders, only: %i[create update destroy]
   resources :payments, only: %i[create update destroy index show]
-  resources :shopping_carts, only: %i[create update destroy show]
+  resources :shopping_carts, only: %i[index create update destroy show]
   resources :departments, only: %i[index show]
   resources :patient_profiles, only: %i[create index show update destroy]
   resources :practitioner_profiles, only: %i[create index show update destroy]
