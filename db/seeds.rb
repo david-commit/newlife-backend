@@ -233,18 +233,24 @@ diabetes_1_drugs.length.times do |i|
 end
 
 
-zero_price_drugs = %w[Masks WheelChair]
-zero_price_drugs.length.times do |i|
+# zero_price_drugs = %w[Masks WheelChair]
+# zero_price_drugs.length.times do |i|
   products << Product.create!(
-    name: zero_price_drugs[i],
-    category: "Free",
+    name: "Masks",
+    category: "Donation",
     price: 0,
-    image:
-      product_images[products.length] ||
-        "https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg",
+    image: "https://i.postimg.cc/m2Z9qZff/free-size-100-3-layer-pharmaceutical-mask-100-pcs-surgical-mask-original-imagfutxyuhft6jp.jpg",
     stock: rand(0..100)
   )
-end
+
+    products << Product.create!(
+    name: "Wheelchair",
+    category: "Donation",
+    price: 0,
+    image: "https://i.postimg.cc/766vdTVJ/71w-EZky-Qc-YL.jpg",
+    stock: rand(0..100)
+  )
+# end
 
 puts "5. seeding product reviews..."
 products.each do |product|
