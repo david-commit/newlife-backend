@@ -23,11 +23,6 @@ class ReviewsController < ApplicationController
         render json: review, status: :ok
     end
 
-    def average
-
-        review 
-    end
-
     def destroy
         review = Review.find(params[:id])
         review.destroy
