@@ -151,7 +151,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_001842) do
     t.string "image"
     t.string "job_title"
     t.string "email"
-    t.integer "height"
+    t.float "height"
     t.index ["practitioner_id"], name: "index_practitioner_profiles_on_practitioner_id"
   end
 
