@@ -67,12 +67,14 @@ RSpec.describe Order, type: :model do
     ShoppingCart.destroy_all
     shopping_cart1 = ShoppingCart.create!(
       order_id: order.id,
-      product_id: product.id
+      product_id: product.id,
+      quantity: 1
     )
 
     shopping_cart2 = ShoppingCart.create!(
       order_id: order.id,
-      product_id: product.id
+      product_id: product.id,
+      quantity: 1
     )
     
     expect(order.shopping_carts).to be_kind_of(ActiveRecord::Associations::CollectionProxy)    
@@ -108,12 +110,14 @@ RSpec.describe Order, type: :model do
     ShoppingCart.destroy_all
     shopping_cart = ShoppingCart.create!(
       order_id: order.id,
-      product_id: product1.id
+      product_id: product1.id,
+      quantity: 1
     )
 
     shopping_cart = ShoppingCart.create!(
       order_id: order.id,
-      product_id: product2.id
+      product_id: product2.id,
+      quantity: 1
     )
     
     expect(order.products).to be_kind_of(ActiveRecord::Associations::CollectionProxy)        

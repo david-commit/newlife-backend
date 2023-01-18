@@ -21,7 +21,7 @@ RSpec.describe "ShoppingCarts", type: :request do
       price: 2.67
     )    
 
-    post '/shopping_carts', params: {"order_id": order.id, "product_id": product.id}, headers: {"Accept": "application/json", "Authorization": token}
+    post '/shopping_carts', params: {"order_id": order.id, "product_id": product.id, "quantity": 1}, headers: {"Accept": "application/json", "Authorization": token}
 
     expect(response).to have_http_status(201)
   end
@@ -49,7 +49,8 @@ RSpec.describe "ShoppingCarts", type: :request do
     ShoppingCart.destroy_all
     shopping_cart = ShoppingCart.create!(
       order_id: order.id,
-      product_id: product.id
+      product_id: product.id,
+      quantity: 1
     )     
     
     product2 = Product.create!(
@@ -58,9 +59,9 @@ RSpec.describe "ShoppingCarts", type: :request do
       price: 2.67
     ) 
     
-    patch "/shopping_carts/#{shopping_cart.id}", params: {"order_id": order.id, "product_id": product2.id}, headers: {"Accept": "application/json", "Authorization": token} 
+    patch "/shopping_carts/#{shopping_cart.id}", params: {"order_id": order.id, "product_id": product2.id, "quantity": 2}, headers: {"Accept": "application/json", "Authorization": token} 
     
-    expect(JSON.parse(response.body)["product_id"]).to eql(product2.id)
+    expect(JSON.parse(response.body)["quantity"]).to eql(2)
   end
 
   it "can be destroyed" do
@@ -86,7 +87,8 @@ RSpec.describe "ShoppingCarts", type: :request do
     ShoppingCart.destroy_all
     shopping_cart = ShoppingCart.create!(
       order_id: order.id,
-      product_id: product.id
+      product_id: product.id,
+      quantity: 1
     )
 
     delete "/shopping_carts/#{shopping_cart.id}", headers: {"Accept": "application/json", "Authorization": token}
@@ -117,7 +119,8 @@ RSpec.describe "ShoppingCarts", type: :request do
     ShoppingCart.destroy_all
     shopping_cart = ShoppingCart.create!(
       order_id: order.id,
-      product_id: product.id
+      product_id: product.id,
+      quantity: 1
     )
 
     get "/shopping_carts/#{shopping_cart.id}", headers: {"Accept": "application/json", "Authorization": token}
@@ -155,45 +158,50 @@ RSpec.describe "ShoppingCarts", type: :request do
     product = Product.create!(
       name: "What",
       category: "Whatever",
-      price: 2.67
+      price: 2.67,
     )
     
     product2 = Product.create!(
       name: "Product 2",
       category: "Product 2",
-      price: 2.67
+      price: 2.67,
     ) 
     
     product2 = Product.create!(
       name: "Product 3",
       category: "Product 3",
-      price: 2.67
+      price: 2.67,
     ) 
     
     ShoppingCart.destroy_all
     shopping_cart = ShoppingCart.create!(
       order_id: order.id,
-      product_id: product.id
+      product_id: product.id,
+      quantity: 1
     ) 
     
     shopping_cart = ShoppingCart.create!(
       order_id: order.id,
-      product_id: product2.id
+      product_id: product2.id,
+      quantity: 1
     )
     
     shopping_cart = ShoppingCart.create!(
       order_id: order2.id,
-      product_id: product2.id
+      product_id: product2.id,
+      quantity: 1
     ) 
     
     shopping_cart = ShoppingCart.create!(
       order_id: order3.id,
-      product_id: product.id
+      product_id: product.id,
+      quantity: 1
     ) 
     
     shopping_cart = ShoppingCart.create!(
       order_id: order3.id,
-      product_id: product2.id
+      product_id: product2.id,
+      quantity: 1
     )  
     
     headers = {"Content-Type": "application/json", "Accept": "application/json"}

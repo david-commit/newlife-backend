@@ -40,7 +40,7 @@ class ShoppingCartsController < ApplicationController
     end
 
     def shopping_cart_params
-        params.permit(:order_id, :product_id)
+        params.permit(:order_id, :product_id, :quantity)
     end
 
     def record_invalid(invalid)

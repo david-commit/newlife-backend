@@ -4,4 +4,5 @@ class ShoppingCart < ApplicationRecord
 
   validates :order, presence: true
   validates :product, presence: true
+  validates :quantity, presence: true
 end
