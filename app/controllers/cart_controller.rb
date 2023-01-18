@@ -3,11 +3,20 @@ class CartController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
     def show
-        if(params["show_details"] == "true")
-            render json: Order.last, status: :ok
+        if(params[:user_id])
+            last_order = User.find(params[:user_id]).orders.last
+
+            if(last_order.nil?)
+                last_order = Order.create!(user_id: params[:user_id], delivered: false)
+            end
+
+            if(params["show_details"] == "true")
+                render json: last_order, status: :ok
+            else
+                render json: ShoppingCart.where("order_id = ?", last_order.id), status: :ok
+            end
         else
-            last_order_id = Order.last&.id
-            render json: ShoppingCart.where("order_id = ?", last_order_id), status: :ok
+            render json: {error: "Unauthorized. Please log in first"}
         end
     end
 
