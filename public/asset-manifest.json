@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2d8186f8.css",
+    "main.js": "/static/js/main.fb929482.js",
+    "static/media/black-female-doctor-focused.png": "/static/media/black-female-doctor-focused.5a294a26faae62c5e035.png",
+    "static/media/front-view-nurse-wearing-stethoscope.jpg": "/static/media/front-view-nurse-wearing-stethoscope.886c9ee10793f656ead7.jpg",
+    "static/media/dark-female-doctor.png": "/static/media/dark-female-doctor.28296ac868112fe39729.png",
+    "static/media/black-male-doc-with-tab.png": "/static/media/black-male-doc-with-tab.521627cf416a8fe4c2c4.png",
+    "static/media/Pexels-Photo-by-Karolina-Grabowska.png": "/static/media/Pexels-Photo-by-Karolina-Grabowska.393ece649acfd110c0c3.png",
+    "static/media/rev-img-1.jpg": "/static/media/rev-img-1.9ad75bd64ddda09040f6.jpg",
+    "static/media/black_doc.jpg": "/static/media/black_doc.37a9b7cff6dc27fe766e.jpg",
+    "static/media/loading.gif": "/static/media/loading.b3f01ae09198e0b33916.gif",
+    "static/media/rev-img-2.jpg": "/static/media/rev-img-2.944498091888d3e6fb44.jpg",
+    "static/media/Lipanampesa.png": "/static/media/Lipanampesa.0c21eb4b31091f1ec2ea.png",
+    "static/media/sararicom-mpesa.png": "/static/media/sararicom-mpesa.47bd0a3b843ca15f39c8.png",
+    "static/media/banner-img-full.jpg": "/static/media/banner-img-full.4df9ee28783cb00ce6b0.jpg",
+    "static/media/rev-img-3.jpg": "/static/media/rev-img-3.6908ada1f9752931f3fa.jpg",
+    "static/media/logo.png": "/static/media/logo.d0a81aa782fcecd51924.png",
+    "index.html": "/index.html",
+    "main.2d8186f8.css.map": "/static/css/main.2d8186f8.css.map",
+    "main.fb929482.js.map": "/static/js/main.fb929482.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2d8186f8.css",
+    "static/js/main.fb929482.js"
+  ]
+}
