@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     get "/cart", to: "cart#show"
-    
+
     resources :appointments, only: %i[index show]
     resources :orders, only: %i[index show]
     resources :shopping_carts, only: %i[show index]
