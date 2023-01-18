@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_record_not_found
+  rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid
   skip_before_action :authorized, only: %i[index show search average_rating]
 
   def index
@@ -54,6 +55,10 @@ class ProductsController < ApplicationController
 
   def render_record_not_found
     render json: { error: "Product not found" }, status: :not_found
+  end
+
+  def render_record_invalid(e)
+    render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
   end
 
   def product_params
