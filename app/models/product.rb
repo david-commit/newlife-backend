@@ -12,7 +12,13 @@ class Product < ApplicationRecord
   def average_rating
     reviews.average(:rating)
   end
-  
+
+  has_many :shopping_carts
+  has_many :orders, through: :shopping_carts
+  has_many :dosage_considerations
+  has_many :side_effects
+  has_many :reviews
+
   has_many :shopping_carts, dependent: :destroy
   has_many :orders, through: :shopping_carts, dependent: :destroy
   has_many :dosage_considerations, dependent: :destroy
