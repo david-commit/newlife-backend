@@ -3,7 +3,7 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   # config.hosts << "newlife-production.up.railway.app"
-
+  config.hosts << "newlife-backend-production.up.railway.app"
   # allow ngrok to work
   config.hosts << /.*\.ngrok\.io/
   # In the development environment your application's code is reloaded any time
