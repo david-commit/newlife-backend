@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
+    user = User.create!(user_params)
     if user.valid?
       token = issue_token(user)
       # MyMailer.send_email(user.email, "Hello", "Pokea").deliver_now
@@ -17,11 +17,6 @@ class UsersController < ApplicationController
                jwt: token
              },
              status: :created
-    else
-      render json: {
-               error: "failed to create user"
-             },
-             status: :unprocessable_entity
     end
 
   end
