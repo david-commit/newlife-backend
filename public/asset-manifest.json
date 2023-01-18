@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.2d8186f8.css",
-    "main.js": "/static/js/main.fb929482.js",
+    "main.js": "/static/js/main.d7150faf.js",
     "static/media/black-female-doctor-focused.png": "/static/media/black-female-doctor-focused.5a294a26faae62c5e035.png",
     "static/media/front-view-nurse-wearing-stethoscope.jpg": "/static/media/front-view-nurse-wearing-stethoscope.886c9ee10793f656ead7.jpg",
     "static/media/dark-female-doctor.png": "/static/media/dark-female-doctor.28296ac868112fe39729.png",
@@ -18,10 +18,10 @@
     "static/media/logo.png": "/static/media/logo.d0a81aa782fcecd51924.png",
     "index.html": "/index.html",
     "main.2d8186f8.css.map": "/static/css/main.2d8186f8.css.map",
-    "main.fb929482.js.map": "/static/js/main.fb929482.js.map"
+    "main.d7150faf.js.map": "/static/js/main.d7150faf.js.map"
   },
   "entrypoints": [
     "static/css/main.2d8186f8.css",
-    "static/js/main.fb929482.js"
+    "static/js/main.d7150faf.js"
   ]
 }
