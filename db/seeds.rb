@@ -280,8 +280,8 @@ products.each do |product|
 end
 
 puts "8. seeding shopping_cart..."
-5.times do
-  ShoppingCart.create!(order_id: order1.id, product_id: products.sample.id, quantity: rand(1..10))
+5.times do |i|
+  ShoppingCart.create!(order_id: order1.id, product_id: products[i].id, quantity: rand(1..10))
 end
 
 puts "9. seeding department..."
