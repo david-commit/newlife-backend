@@ -30,7 +30,8 @@ RSpec.describe ShoppingCart, type: :model do
     ShoppingCart.destroy_all
     shopping_cart = ShoppingCart.create!(
       order_id: order.id,
-      product_id: product.id
+      product_id: product.id,
+      quantity: 1
     )
 
     expect(shopping_cart.id.nil?).to eql(false)
@@ -68,7 +69,8 @@ RSpec.describe ShoppingCart, type: :model do
     ShoppingCart.destroy_all
     shopping_cart = ShoppingCart.create!(
       order_id: order.id,
-      product_id: product.id
+      product_id: product.id,
+      quantity: 1
     )
     
     shopping_cart_id = shopping_cart.id

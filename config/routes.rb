@@ -15,8 +15,6 @@ Rails.application.routes.draw do
   delete "/admin/logout", to: "admin_sessions#destroy"
   delete "/admin/delete_account", to: "admins#destroy"
 
-  get "/cart", to: "cart#show"
-
   resources :products, only: %i[index show]
   resources :messages, only: [:create]
   resources :appointments, only: %i[create destroy update]
@@ -37,6 +35,8 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show] do
+    get "/cart", to: "cart#show"
+    
     resources :appointments, only: %i[index show]
     resources :orders, only: %i[index show]
     resources :shopping_carts, only: %i[show index]
